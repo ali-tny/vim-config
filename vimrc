@@ -583,7 +583,7 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>x :wqa<CR>
 
 " Open vimrc in new window
-nnoremap <leader>ve :e ~/.vimrc<CR>
+nnoremap <leader>ve :e ~/.vim/vimrc<CR>
 
 " Create tags file. This could be made fancier as the default config file
 " (~/.ctags) is quite python specific at the moment.
