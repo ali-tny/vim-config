@@ -112,10 +112,6 @@ Plugin 'henrik/vim-indexed-search'
 " Language pack with syntax and indent files for a range of language
 Plugin 'sheerun/vim-polyglot'
 
-" Python indentation (still required as of vim 8 - disabled on 2018-01-15 to
-" check if vimpolyglot covers it)
-"Plugin 'vim-scripts/indentpython.vim'
-
 " Better markdown support. This plugin provides:
 " - highlighting of fenced code blocks
 " - highlighting of frontmatter
