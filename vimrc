@@ -35,14 +35,12 @@
 " ----------
 "
 " .vim/
-"     bundle/              # Plugins
+"     bundle/              # Plugins installed with Vundle
 "     ftplugin/            # Per-filetype settings (these run when any buffer's filetype is set)
 "                          # Should only use setlocal
 "     indent/
 "         htmldjango.vim   # Improved htmldjango indent script which handles
 "                            block indentation (which the standard file doesn't).
-"     syntax/              # Syntax highlighting that isn't in core
-"         puppet.vim       # (Can this be replaced with a plugin?)
 "
 " }}}
 
@@ -146,10 +144,6 @@ Plugin 'dietsche/vim-lastplace'
 " Not sure if ale is slowing things down
 Plugin 'w0rp/ale'
 "Plugin 'vim-syntastic/syntastic'
-
-" Run 'black' on save - quite useful but needs the project to have a
-" wholesales conversion first.
-"Plugin 'ambv/black'
 
 " HTML editing
 " ------------
@@ -433,10 +427,6 @@ let g:SimpylFold_fold_import = 0
 " Polyglot
 let g:terraform_fmt_on_save = 1
 
-" Black (disabled)
-" let g:black_linelength = 99
-" let g:black_skip_string_normalization = 1
-
 " Ale
 " ---
 " Only run flake8 for Python linting as running MyPy is slow.
@@ -652,8 +642,6 @@ augroup filetype_python
     " autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
     " Enable python.django filetype for all python files
     autocmd FileType python set filetype=python.django 
-    " Run Black auto-formatter on pre-save
-    " autocmd BufWritePre *.py execute ':silent :Black'
 
 augroup END
 
