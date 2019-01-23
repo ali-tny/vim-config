@@ -404,11 +404,8 @@ let g:go_jump_to_error = 0
 " -------
 let g:sparkupNextMapping = "<NOP>"
 
-" Python folding
-let g:SimpylFold_docstring_preview = 0
-let g:SimpylFold_fold_import = 0
-
 " Polyglot
+" --------
 let g:terraform_fmt_on_save = 1
 
 " Ale
