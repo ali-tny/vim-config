@@ -230,10 +230,7 @@ set wildmode=list:longest,full          " Command-line completion
 set wildignore+=*.pyc,*egg-info*        " Define files to ignore
 
 set shellslash                          " A forward slash is used when expanding filenames
-" Reverting to see if get more realestate
 set cmdheight=1
-"set cmdheight=3                         " Try and avoid the dreaded "press <Enter> to continue" by setting the 
-"                                        " the height of the command bar
 " }}}
 
 " Appearance {{{
@@ -258,6 +255,7 @@ set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 " }}}
 
 " Terminal {{{
+" --------
 if ! has("gui_running")
     set term=xterm-256color
     set termencoding=utf-8
@@ -269,6 +267,7 @@ set encoding=utf-8                      " Use UTF-8 as the default buffer encodi
 " }}}
 
 " Mouse {{{
+" -----
 set mouse=a                             " Enables use of mouse in all modes
 set mousehide                           " Hide mouse when typing
 " }}}
@@ -316,15 +315,20 @@ endif
 " }}}
 
 " History  {{{
+" -------
+"
 " Keep undo history between sessions
 if has('persistent_undo')
     set undofile
     set undodir=~/.vim_undo
     set undolevels=2000
 endif
+
 " }}}
 
 " GUI options {{{
+" -----------
+"
 " Note - when running in console mode, the font is taken from iTerm
 if has("gui_running")
     " Set GUI options
@@ -336,6 +340,7 @@ if has("gui_running")
     set guifont=Monaco:h14
     set selectmode=""
 endif
+
 " }}}
 
 " Command-mode mappings {{{
@@ -360,6 +365,7 @@ onoremap an( :<c-u>normal! f(va(<cr>
 " }}}
 
 " Abbreviations {{{
+" -------------
 
 " Auto-correct common typos
 iabbrev si is
