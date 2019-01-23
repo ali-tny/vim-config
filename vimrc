@@ -143,7 +143,6 @@ Plugin 'dietsche/vim-lastplace'
 
 " Not sure if ale is slowing things down
 Plugin 'w0rp/ale'
-"Plugin 'vim-syntastic/syntastic'
 
 " HTML editing
 " ------------
@@ -410,15 +409,6 @@ let g:go_jump_to_error = 0
 " Sparkup
 " -------
 let g:sparkupNextMapping = "<NOP>"
-
-" Syntastic 
-" --------- 
-" Defaults (from README)
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['flake8']
 
 " Python folding
 let g:SimpylFold_docstring_preview = 0
