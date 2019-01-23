@@ -151,8 +151,6 @@ Plugin 'rstacruz/sparkup'
 " ------------
 
 " See http://vimcolors.com/
-"Plugin 'flazz/vim-colorschemes'
-"Plugin 'altercation/vim-colors-solarized'
 Plugin 'jnurmine/Zenburn'
 
 call vundle#end()
