@@ -5,8 +5,8 @@
 setlocal expandtab
 setlocal autoindent
 
-" Wrap text
-setlocal textwidth=0
+" Don't format into paras - allow to wrap instead.
 setlocal wrap
+setlocal linebreak
 
 setlocal formatoptions=tron21
