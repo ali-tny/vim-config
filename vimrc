@@ -643,20 +643,12 @@ set tags=./tags,tags,$VIRTUAL_ENV/tags
 augroup filetype_python 
     autocmd!
     " Delete trailing whitespace when saving python files
-    " autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
+    autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
     " Enable python.django filetype for all python files
     autocmd FileType python set filetype=python.django 
 
 augroup END
 
-function! DeleteTrailingWhiteSpace()
-    " Use a mark to return cursor to original position
-    exe "normal mz"
-    " Delete all trailing whitespace
-    %s/\s\+$//ge
-    " Return cursor to mark
-    exe "normal `z"
-endfunction
 
 augroup filetype_javascript
     autocmd!
