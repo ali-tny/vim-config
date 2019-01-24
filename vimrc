@@ -6,8 +6,14 @@
 " - http://www.youtube.com/watch?v=aHm36-na4-4 
 "
 " Articles:
+"
 " - http://alexpounds.com/blog/2014/06/06/the-vimrc-antiques-roadshow
+"
 " - http://stevelosh.com/blog/2010/09/coming-home-to-vim/
+"
+" - https://vimways.org/2018/from-vimrc-to-vim/ - Good article on storing your
+"   config in your .vim folder rather than putting everything in one massive
+"   .vimrc
 "
 " Notable RC files:
 " - https://bitbucket.org/sjl/dotfiles/src/562b7094aad5c602c6228c1d89f69d0abb3bab6b/vim/vimrc?at=default&fileviewer=file-view-default 
@@ -36,11 +42,22 @@
 "
 " .vim/
 "     bundle/              # Plugins installed with Vundle
+"     plugins              # Local plugins
 "     ftplugin/            # Per-filetype settings (these run when any buffer's filetype is set)
 "                          # Should only use setlocal
 "     indent/
 "         htmldjango.vim   # Improved htmldjango indent script which handles
 "                            block indentation (which the standard file doesn't).
+"
+" At start-up Vim sources all files in plugins folders in $RUNTIMEPATH. This
+" is the best place to store things that are language agnostic and only need
+" to be sourced once.
+"
+" When a new file-type buffer is loaded Vim sources all
+" ftplugin/{filetype}.vim files in $RUNTIMEPATH
+"
+" Put Vim files in after to ensure they get sourced AFTER all core/bundle
+" version have run. This is how you OVERRIDE.
 "
 " }}}
 
