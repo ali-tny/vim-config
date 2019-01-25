@@ -8,4 +8,4 @@ setlocal colorcolumn=100
 autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
 
 " Unable settings if filetype changes
-let b:undo_ftplugin .= '|setlocal textwidth< colorcolumn<'
+let b:undo_ftplugin = 'setlocal textwidth< colorcolumn<'
