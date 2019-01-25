@@ -640,12 +640,6 @@ set tags=./tags,tags,$VIRTUAL_ENV/tags
 "   group. This prevents each sourcing from adding duplicate autocommands
 "
 
-augroup filetype_javascript
-    autocmd!
-    " Remove tabs from JS files
-    autocmd BufNewFile *.js :retab<CR>
-augroup END
-
 augroup filetime_html
     autocmd!
     " Use htmldjango as file-type for HTML files
