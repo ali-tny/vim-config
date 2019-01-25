@@ -646,25 +646,6 @@ set tags=./tags,tags,$VIRTUAL_ENV/tags
 "   group. This prevents each sourcing from adding duplicate autocommands
 "
 
-augroup filetime_html
-    autocmd!
-    " Use htmldjango as file-type for HTML files
-    autocmd FileType html set filetype=htmldjango
-augroup END
-
-" Set filetypes based on file extensions of new buffers
-augroup set_filetypes
-    autocmd!
-
-    autocmd BufRead,BufNewFile *.md set filetype=markdown
-    autocmd BufRead,BufNewFile *.scala set filetype=scala
-    autocmd BufRead,BufNewFile *.pp set filetype=puppet
-    autocmd BufRead,BufNewFile *.sls set filetype=yaml
-    autocmd BufRead,BufNewFile *.rml set filetype=xml
-
-    autocmd BufRead,BufNewFile PULLREQ_EDITMSG set filetype=gitcommit
-augroup END
-
 augroup cursorline
     autocmd!
     " Only show the cursorline for current buffer in normal mode  
