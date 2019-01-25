@@ -1,6 +1,3 @@
-" PEP8 stuff
-setlocal textwidth=99
-setlocal colorcolumn=100
 
 " Comment current line
 nnoremap <buffer> <localleader>c I#<ESC>

@@ -640,16 +640,6 @@ set tags=./tags,tags,$VIRTUAL_ENV/tags
 "   group. This prevents each sourcing from adding duplicate autocommands
 "
 
-augroup filetype_python 
-    autocmd!
-    " Delete trailing whitespace when saving python files
-    autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
-    " Enable python.django filetype for all python files
-    autocmd FileType python set filetype=python.django 
-
-augroup END
-
-
 augroup filetype_javascript
     autocmd!
     " Remove tabs from JS files
@@ -662,7 +652,7 @@ augroup filetime_html
     autocmd FileType html set filetype=htmldjango
 augroup END
 
-" Set filetypes based on file extensions
+" Set filetypes based on file extensions of new buffers
 augroup set_filetypes
     autocmd!
 
@@ -673,7 +663,6 @@ augroup set_filetypes
     autocmd BufRead,BufNewFile *.rml set filetype=xml
 
     autocmd BufRead,BufNewFile PULLREQ_EDITMSG set filetype=gitcommit
-
 augroup END
 
 augroup cursorline
