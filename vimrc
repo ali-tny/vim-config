@@ -48,6 +48,9 @@
 "     indent/
 "         htmldjango.vim   # Improved htmldjango indent script which handles
 "                            block indentation (which the standard file doesn't).
+"     after/               # Vim files sourced AFTER dependencies (better for overriding)
+"         ftplugins/
+"         ...
 "
 " At start-up Vim sources all files in plugins folders in $RUNTIMEPATH. This
 " is the best place to store things that are language agnostic and only need
@@ -58,6 +61,9 @@
 "
 " Put Vim files in after to ensure they get sourced AFTER all core/bundle
 " version have run. This is how you OVERRIDE.
+"
+" See
+" - https://vimways.org/2018/from-vimrc-to-vim/
 "
 " }}}
 
