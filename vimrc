@@ -420,15 +420,6 @@ let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_json_frontmatter = 1
 let g:vim_markdown_new_list_item_indent = 2
 
-" Vim-go
-" ------
-let g:go_fmt_command = "goimports"          " ensure imports are correct save
-
-" This prevents confusion on :GoTest failures where vim-go can't work out
-" where to jump to (because of the altered output from testify). See
-" https://github.com/fatih/vim-go/issues/367
-let g:go_jump_to_error = 0
-
 " Sparkup
 " -------
 let g:sparkupNextMapping = "<NOP>"
@@ -459,6 +450,9 @@ set pastetoggle=§
 
 " Copy to system clipboard
 map <leader>y "*y
+
+" Replace word under cursor with top spelling suggestion
+map <leader>z 1z=
 
 " INSERT MODE
 " -----------
