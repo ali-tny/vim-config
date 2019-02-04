@@ -123,6 +123,13 @@ Plugin 'mjbrownie/django-template-textobjects'
 
 " Quick file/buffer/tag searching (faster than CtrlP)
 " ctrl-v - open file in split
+" See https://github.com/junegunn/fzf.vim#commands
+" :GFiles - git files
+" :Colors - colorschemes
+" :Lines  - lines in open buffers
+" :Commits - git commits
+" :History - buffer history
+"
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
@@ -192,6 +199,7 @@ if &t_Co > 2 || has("syntax")
     syntax on
 endif
 
+" Source indent/ftplugins for filetypes
 filetype indent plugin on               " Turn on filetype detection
 
 " }}}
@@ -232,7 +240,7 @@ set formatoptions=tcqo2j                " Control how gq behaves see `fo-table`
                                         " 2 = control indenting of para (needed for Python docstring) 
                                         " j = remove comment markers where it makes sense
                                         
-" Control how long vim waits for another key                                        
+" Control how long Vim waits for another key                                        
 set timeoutlen=500                                        
 
 " Treat hyphens as part of a word
@@ -329,8 +337,6 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "   * use "-t html" to only search one filetype
 "   * use "-w" to match on word boundaries
 if executable('rg') 
-    "set grepprg=rg\ --no-heading\ --color=never\ --column
-    " Try vimgrep option
     set grepprg=rg\ --vimgrep
     set grepformat=%f:%l:%c:%m
 endif 
