@@ -420,11 +420,25 @@ let g:fzf_layout = { 'down': '~40%' }
 
 " Markdown
 " --------
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_fenced_languages = ['php', 'python', 'js=javascript', 'bash=sh', 'viml=vim']
+" See https://github.com/plasticboy/vim-markdown#options
+
+" Allow folding as useful for large docs with lots of sections
+let g:vim_markdown_folding_disabled = 0
+
+" Fold heading in with the contents
+let g:vim_markdown_folding_style_pythonic = 1
+
+" Don't use the shipped key bindings
+let g:vim_markdown_no_default_key_mappings = 1
+
+" Indentation for new lists
+let g:vim_markdown_new_list_item_indent = 2
+
+" Syntax extensions (mainly for Hugo blogging)
+let g:vim_markdown_fenced_languages = ['php', 'py=python', 'js=javascript', 'bash=sh', 'viml=vim']
 let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_json_frontmatter = 1
-let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_strikethrough = 1
 
 " Sparkup
 " -------
