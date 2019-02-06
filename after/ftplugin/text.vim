@@ -1,7 +1,3 @@
-" =============
-" TEXT SETTINGS
-" =============
-
 setlocal expandtab
 setlocal autoindent
 
@@ -10,3 +6,6 @@ setlocal wrap
 setlocal linebreak
 
 setlocal formatoptions=tron21
+
+" Unable settings if filetype changes
+let b:undo_ftplugin .= '|setlocal expandtab< autoindent< wrap< linebreak< formatoptions<'

@@ -15,4 +15,4 @@ setlocal textwidth=0
 setlocal spell
 
 " Unable settings if filetype changes
-let b:undo_ftplugin = 'setlocal textwidth< spell<'
+let b:undo_ftplugin .= '|setlocal textwidth< spell<'

@@ -7,3 +7,6 @@ setlocal autoindent
 " treats as a modeline and spits out an error. We disabled modelines for
 " markdown files.
 setlocal nomodeline
+
+"" Unable settings if filetype changes
+let b:undo_ftplugin .= '|setlocal textwidth< spell< nonumber< autoindent< nomodeline<'
