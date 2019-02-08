@@ -167,7 +167,7 @@ Plugin 'dietsche/vim-lastplace'
 " Linting 
 " -------
 
-" Not sure if ale is slowing things down
+" https://github.com/w0rp/ale
 Plugin 'w0rp/ale'
 
 " HTML editing
@@ -450,12 +450,17 @@ let g:terraform_fmt_on_save = 1
 
 " Ale
 " ---
-" Only run flake8 for Python linting as running MyPy is slow.
-let g:ale_linters = {'python': ['flake8']}
+" Note, language-specific linters are defined in ftplugin modules
+
+" Enable Ale suggestions in omnicomplete
+let g:ale_completion_enabled = 1
+
+" Customise warning format to include linter name
+let g:ale_echo_msg_format = '[%linter%] %code%: %s'
 
 " Jump between syntax errors
-nnoremap <silent> <C-k> <Plug>(ale_previous_wrap)
-nnoremap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " }}}
  
