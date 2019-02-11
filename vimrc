@@ -152,7 +152,7 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
-" Git integration
+" Git integration 
 " ---------------
 
 " Git(hub) integration
@@ -182,6 +182,11 @@ Plugin 'rstacruz/sparkup'
 
 " See http://vimcolors.com/
 Plugin 'jnurmine/Zenburn'
+
+" Debugging
+" ---------
+
+Plugin 'tpope/vim-scriptease'
 
 call vundle#end()
 
