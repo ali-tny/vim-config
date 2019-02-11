@@ -89,6 +89,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 
+" Extend % matching to include HTML tags
+Plugin 'tmhedberg/matchit'
+
 " Non-standard text-objects
 " -------------------------
 
@@ -149,11 +152,8 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
-" Folding
-" -------
-
-" Extend % matching to include HTML tags
-Plugin 'tmhedberg/matchit'
+" Git integration
+" ---------------
 
 " Git(hub) integration
 " :Gstatus
@@ -399,6 +399,7 @@ onoremap an( :<c-u>normal! f(va(<cr>
 " Auto-correct common typos
 iabbrev si is
 iabbrev tehn then
+iabbrev acocunt account
 
 " }}}
 
