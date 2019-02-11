@@ -173,9 +173,9 @@ Plugin 'w0rp/ale'
 " HTML editing
 " ------------
 
-" Another quick way of writing tags - use C-E to expand the shorthand syntax
+" Another quick way of writing tags - use C-K to expand the shorthand syntax
 " eg .container > .wrapper > ul > li.item * 4
-Plugin 'rstacruz/sparkup'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " Color scheme
 " ------------
@@ -448,6 +448,9 @@ let g:vim_markdown_strikethrough = 1
 
 " Sparkup
 " -------
+
+" Use C-K to expand
+let g:sparkupExecuteMapping = "<C-K>"
 let g:sparkupNextMapping = "<NOP>"
 
 " Polyglot
