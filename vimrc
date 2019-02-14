@@ -455,7 +455,12 @@ let g:sparkupNextMapping = "<NOP>"
 
 " Polyglot
 " --------
+
+" Format buffer before saving
 let g:terraform_fmt_on_save = 1
+
+" Puppet - align hashes (while editing)
+let g:puppet_align_hashes = 1
 
 " Ale
 " ---
