@@ -537,6 +537,8 @@ nnoremap ; :
 " Disable cursors
 nnoremap <Up>    <NOP>
 nnoremap <Down>  <NOP>
+nnoremap <Left>  <NOP>
+nnoremap <Right> <NOP>
 
 " Search codebase for word under cursor (v useful)
 nnoremap gw :grep <cword> . <CR>
@@ -571,10 +573,10 @@ nnoremap N Nzz
 " Space is pager
 nnoremap <Space> <PageDown>
 
-" Jump between search matches (from the error list) when using :grep and open
+" Jump between entries in quickfix list. Works well when using :grep and open
 " the folds obscuring the matching line.
-nnoremap <silent> <RIGHT> :cnext<CR>zO
-nnoremap <silent> <LEFT> :cprev<CR>
+nnoremap <silent> <C-n> :cnext<CR>zO
+nnoremap <silent> <C-p> :cprev<CR>
 
 " Open folds after jumping
 nnoremap n nzO
