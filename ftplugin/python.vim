@@ -57,6 +57,11 @@ function! RunMostRecentTestModule()
             let t:test_options = " --ds=tests.settings_affiliates "
         endif
 
+        let in_webhooksite_test = match(t:test_module, 'tests/functional/webhooksite') != -1
+        if in_webhooksite_test
+            let t:test_options = " --ds=tests.settings_webhooks "
+        endif
+
         let in_apisite_test = match(t:test_module, 'tests/functional/apisite') != -1
         if in_apisite_test
             let t:test_options = " --ds=tests.settings_api "

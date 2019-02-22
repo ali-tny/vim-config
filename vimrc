@@ -329,7 +329,7 @@ set wrapscan                            " Wrap searching
 set incsearch                           " Do incremental searching
 set gdefault                            " Global setting on by default in subsituting
 set ignorecase                          " Ignore case when searching..
-set smartcase                           " ..but use case when search term has an uppder-case char
+set smartcase                           " ..but use case when search term has an upper-case char
 set magic
 set hlsearch                            " Highlight all search results (sometimes annoying)
 set synmaxcol=200                       " Don't try to highlight long lines (for performance)
