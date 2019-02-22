@@ -288,6 +288,11 @@ set foldlevel=0
 set foldnestmax=2
 set foldlevelstart=0                    " Starting fold level for a new buffer
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
+
+" Spelling
+" The custom dict lives in ~/.vim/spell/
+set spell
+
 " }}}
 
 " Terminal {{{

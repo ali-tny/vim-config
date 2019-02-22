@@ -2,6 +2,9 @@
 setlocal textwidth=99
 setlocal colorcolumn=100
 
+" Spellcheck comments
+setlocal spell
+
 " Delete trailing whitespace when saving
 autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
 
