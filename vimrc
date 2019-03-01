@@ -145,10 +145,14 @@ Plugin 'henrik/vim-indexed-search'
 " Language pack with syntax and indent files for a range of language
 Plugin 'sheerun/vim-polyglot'
 
-" Better markdown support. This plugin provides:
+" Better markdown support than that provided by vim-polyglot. Vim-polyglot
+" already provides the indent and syntax parts of this plugin, but the folding
+" part is useful too so we install it separately and disable markdown support from polyglot.
+"
+" Useful features include:
+" - folding
 " - highlighting of fenced code blocks
 " - highlighting of frontmatter
-" - folding
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
@@ -449,6 +453,7 @@ let g:vim_markdown_new_list_item_indent = 2
 let g:vim_markdown_fenced_languages = ['php', 'py=python', 'js=javascript', 'bash=sh', 'viml=vim']
 let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_json_frontmatter = 1
+let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_strikethrough = 1
 
 " Sparkup
@@ -466,6 +471,9 @@ let g:terraform_fmt_on_save = 1
 
 " Puppet - align hashes (while editing)
 let g:puppet_align_hashes = 1
+
+" Disable markdown from Polyglot as we're install a separate extension
+let g:polyglot_disabled = ['markdown']
 
 " Ale
 " ---
