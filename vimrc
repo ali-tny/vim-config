@@ -542,9 +542,6 @@ inoremap <C-f> <ESC>vipgqi
 " Save and quit from insert mode
 inoremap <leader><leader> <ESC>:wq<CR>
 
-" Shortcut to insert pdb
-inoremap <C-J> import ipdb; ipdb.set_trace() 
-
 
 " NORMAL MODE
 " -----------

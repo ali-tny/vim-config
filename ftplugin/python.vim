@@ -11,6 +11,9 @@ setlocal foldmethod=indent
 " Quick file access in virtualenvs (should only load for Python files)
 nnoremap <leader>vp :e $VIRTUAL_ENV/lib/python3.6/site-packages/
 
+" Shortcut to insert pdb
+inoremap <C-J> import ipdb; ipdb.set_trace() 
+
 
 " Keyboard shortcuts for quickly running tests
 " --------------------------------------------
