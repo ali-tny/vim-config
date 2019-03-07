@@ -85,7 +85,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Mappings for editing surrounding delimiters, tags etc, eg
 "   cs"<em>     => Change Surrounding quotes to <em> tags
-"   ysiw[       => applY Surrounding brackets to word (iw)
+"   ysiw[       => applY Surrounding brackets to word (iw) or other text object
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 
@@ -95,7 +95,7 @@ Plugin 'tmhedberg/matchit'
 " Non-standard text-objects
 " -------------------------
 
-" Provides lots of textobjects
+" Provides lots of text-objects
 " Eg 'separator text objects' - delimited by one of , . ; : + - = ~ _ * # /
 Plugin 'wellle/targets.vim'
 
@@ -190,6 +190,13 @@ Plugin 'jnurmine/Zenburn'
 " Debugging
 " ---------
 
+" Provides a slew of useful commands like
+" https://github.com/tpope/vim-scriptease
+"
+"   :Messages
+"   :Scriptnames
+"   :Verbose
+"   zS - show active syntax highlight group under the cursor
 Plugin 'tpope/vim-scriptease'
 
 call vundle#end()
