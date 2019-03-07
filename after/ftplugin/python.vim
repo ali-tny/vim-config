@@ -19,7 +19,10 @@ let b:ale_fixers = ['black', 'isort']
 
 " Run fixers when saving (in appropriate repos)
 let b:ale_fix_on_save = 0
+
 let filepath = expand('%:p:h')
 if match(filepath, 'email-classification') != -1
+    let b:ale_fix_on_save = 1
+elseif match(filepath, 'credit-risk-engine') != -1
     let b:ale_fix_on_save = 1
 endif
