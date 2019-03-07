@@ -152,7 +152,7 @@ Plugin 'sheerun/vim-polyglot'
 " Useful features include:
 " - folding
 " - highlighting of fenced code blocks
-" - highlighting of frontmatter
+" - highlighting of front-matter
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
