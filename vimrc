@@ -445,7 +445,7 @@ let g:fzf_layout = { 'down': '~40%' }
 " See https://github.com/plasticboy/vim-markdown#options
 
 " Allow folding as useful for large docs with lots of sections
-let g:vim_markdown_folding_disabled = 0
+let g:vim_markdown_folding_disabled = 1
 
 " Fold heading in with the contents
 let g:vim_markdown_folding_style_pythonic = 1
