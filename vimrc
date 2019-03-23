@@ -497,6 +497,13 @@ let g:ale_echo_msg_format = '[%linter%] %code%: %s'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
+" MatchParen
+
+" Set timeout (in ms) as 44_Highlight_Matching_Pair seems to slow editing some buffers
+" down. See https://vi.stackexchange.com/questions/5128/matchpairs-makes-vim-slow
+let g:matchparen_timeout = 20
+let g:matchparen_insert_timeout = 20
+
 " }}}
  
 " Mappings {{{
