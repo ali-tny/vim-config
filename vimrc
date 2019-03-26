@@ -183,6 +183,7 @@ Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " See http://vimcolors.com/
 Plug 'jnurmine/Zenburn'
+Plug 'junegunn/limelight.vim'
 
 " Debugging
 " ---------
@@ -756,5 +757,7 @@ function! GetSyntax()
     echo synIDattr(GetSyntaxID(), 'name')
     exec "hi ".synIDattr(GetSyntaxParentID(), 'name')
 endfunction
+" Limelight config
+let g:limelight_conceal_ctermfg = 'gray'
 
 " }}}
