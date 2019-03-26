@@ -743,20 +743,6 @@ highlight htmlH2 guifg=#af84e0 gui=bold ctermfg=45 ctermbg=None cterm=bold
 highlight htmlH3 guifg=#aae295 gui=bold ctermfg=39 ctermbg=None cterm=bold
 highlight htmlH4 guifg=#e9f2b3 gui=bold ctermfg=33 ctermbg=None cterm=bold
 
-" Taken from https://www.reddit.com/r/vim/comments/3duumy/changing_markdown_syntax_colors/
-" Run :call GetSyntax() to show highlight settings for word under cursor
-function! GetSyntaxID()
-    return synID(line('.'), col('.'), 1)
-endfunction
-
-function! GetSyntaxParentID()
-    return synIDtrans(GetSyntaxID())
-endfunction
-
-function! GetSyntax()
-    echo synIDattr(GetSyntaxID(), 'name')
-    exec "hi ".synIDattr(GetSyntaxParentID(), 'name')
-endfunction
 " Limelight config
 let g:limelight_conceal_ctermfg = 'gray'
 
