@@ -84,6 +84,10 @@ Plug 'tpope/vim-repeat'
 " Extend % matching to include HTML tags
 Plug 'tmhedberg/matchit'
 
+" Zen-mode for editing:
+" https://github.com/junegunn/goyo.vim
+Plug 'junegunn/goyo.vim'
+
 " Non-standard text-objects
 " -------------------------
 
