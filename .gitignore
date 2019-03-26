@@ -1,7 +1,13 @@
+# Where Vundle stores packages
 bundle
+
+# Where vim-plug stores packages
+plugged
+
 spell
 TODO
 
 .VimballRecord
 .netrwhist
+
 

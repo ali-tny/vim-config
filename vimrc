@@ -41,7 +41,7 @@
 " ----------
 "
 " .vim/
-"     bundle/              # Plugins installed with Vundle
+"     plugged/                # Plugins installed with vim-plug
 "     plugins              # Local plugins
 "     ftplugin/            # Per-filetype settings (these run when any buffer's filetype is set)
 "                          # Should only use setlocal
@@ -67,18 +67,10 @@
 "
 " }}}
 
-" Vundle and plugins {{{
-" ------------------
+" Vim-plug and plugins {{{
+" ------------------------
 
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" All plugins need to be declared here
-" Run :PluginInstall to install them
-" Run :PluginUpdate to update
-
-" Package manager
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin("~/.vim/plugged")
 
 " Editing 
 " -------
@@ -86,32 +78,32 @@ Plugin 'VundleVim/Vundle.vim'
 " Mappings for editing surrounding delimiters, tags etc, eg
 "   cs"<em>     => Change Surrounding quotes to <em> tags
 "   ysiw[       => applY Surrounding brackets to word (iw) or other text object
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 
 " Extend % matching to include HTML tags
-Plugin 'tmhedberg/matchit'
+Plug 'tmhedberg/matchit'
 
 " Non-standard text-objects
 " -------------------------
 
 " Provides lots of text-objects
 " Eg 'separator text objects' - delimited by one of , . ; : + - = ~ _ * # /
-Plugin 'wellle/targets.vim'
+Plug 'wellle/targets.vim'
 
 " Define 'a' as a text obj for a function argument. So you can use 'cia' to
 " change a function arg. 
-Plugin 'vim-scripts/argtextobj.vim'
+Plug 'vim-scripts/argtextobj.vim'
 
 " Use 'i' as a text obj for an indented block
-Plugin 'kana/vim-textobj-indent'
-Plugin 'kana/vim-textobj-user'  " requirement of vim-textobj-indent
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-user'  " requirement of vim-textobj-indent
 
 " use 'l' for the whole line (useful with vim-surround)
-Plugin 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-line'
 
 " Use 'f' for function, 'c' for class
-Plugin 'bps/vim-textobj-python'
+Plug 'bps/vim-textobj-python'
 
 " Custom text objects for Django templates
 "   Use 'db' for block
@@ -119,7 +111,8 @@ Plugin 'bps/vim-textobj-python'
 "   Use 'dv' for {{ var }}
 "   Use 'dt' for {% tag %}
 " Plus others starting with d
-Plugin 'mjbrownie/django-template-textobjects'
+Plug 'mjbrownie/django-template-textobjects'
+
 
 " Navigation
 " ----------
@@ -133,17 +126,17 @@ Plugin 'mjbrownie/django-template-textobjects'
 " :Commits - git commits
 " :History - buffer history
 "
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 " Shows 'Match X of Y' in command bar
-Plugin 'henrik/vim-indexed-search'
+Plug 'henrik/vim-indexed-search'
 
 " Syntax highlighting and indentation
 " -----------------------------------
 
 " Language pack with syntax and indent files for a range of language
-Plugin 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 " Better markdown support than that provided by vim-polyglot. Vim-polyglot
 " already provides the indent and syntax parts of this plugin, but the folding
@@ -153,8 +146,8 @@ Plugin 'sheerun/vim-polyglot'
 " - folding
 " - highlighting of fenced code blocks
 " - highlighting of front-matter
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 " Git integration 
 " ---------------
@@ -162,30 +155,30 @@ Plugin 'plasticboy/vim-markdown'
 " Git(hub) integration
 " :Gstatus
 " :Gbrowse! - copy Github URL to clipboard
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rhubarb'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 " More sophisticated last-position opening which ignores gitcommit
-Plugin 'dietsche/vim-lastplace'
+Plug 'dietsche/vim-lastplace'
 
 " Linting 
 " -------
 
 " https://github.com/w0rp/ale
-Plugin 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " HTML editing
 " ------------
 
 " Another quick way of writing tags - use C-K to expand the shorthand syntax
 " eg .container > .wrapper > ul > li.item * 4
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " Color scheme
 " ------------
 
 " See http://vimcolors.com/
-Plugin 'jnurmine/Zenburn'
+Plug 'jnurmine/Zenburn'
 
 " Debugging
 " ---------
@@ -197,9 +190,9 @@ Plugin 'jnurmine/Zenburn'
 "   :Scriptnames
 "   :Verbose
 "   zS - show active syntax highlight group under the cursor
-Plugin 'tpope/vim-scriptease'
+Plug 'tpope/vim-scriptease'
 
-call vundle#end()
+call plug#end()
 
 " }}}
 
@@ -426,8 +419,6 @@ iabbrev acocunt account
 
 " Plugin config and mappings {{{
 " ==========================
-" I'd like this section to be next to the Vundle declarations but that causes
-" some things to break.
 "
 " FZF
 " ---
