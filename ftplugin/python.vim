@@ -158,5 +158,3 @@ function! RunMostRecentTest()
 endfunction
 
 nnoremap <buffer> <leader>t :call RunMostRecentTest()<cr>
-
-" Run black on save

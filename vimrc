@@ -485,6 +485,8 @@ let g:polyglot_disabled = ['markdown']
 " Enable Ale suggestions in omnicomplete
 let g:ale_completion_enabled = 0
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 1
+let g:ale_fix_on_save = 1
 
 " Customise warning format to include linter name
 let g:ale_echo_msg_format = '[%linter%] %code%: %s'
