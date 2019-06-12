@@ -92,19 +92,20 @@ Plug 'junegunn/goyo.vim'
 " -------------------------
 
 " Provides lots of text-objects
-" Eg 'separator text objects' - delimited by one of , . ; : + - = ~ _ * # /
+"   Use one of , . ; : + - = ~ _ * # / for delimited strings
+"   Use a for a function arg
+" https://github.com/wellle/targets.vim
 Plug 'wellle/targets.vim'
-
-" Define 'a' as a text obj for a function argument. So you can use 'cia' to
-" change a function arg. 
-Plug 'vim-scripts/argtextobj.vim'
 
 " Use 'i' as a text obj for an indented block
 Plug 'kana/vim-textobj-indent'
-Plug 'kana/vim-textobj-user'  " requirement of vim-textobj-indent
+Plug 'kana/vim-textobj-user'  " requirement of vim-textobj-indent and vim-textobj-line
 
-" use 'l' for the whole line (useful with vim-surround)
+" Use 'l' for the whole line (useful with vim-surround)
 Plug 'kana/vim-textobj-line'
+
+" Use 'e' for entire buffer
+Plug 'kana/vim-textobj-entire'
 
 " Use 'f' for function, 'c' for class
 Plug 'bps/vim-textobj-python'
