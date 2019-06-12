@@ -41,7 +41,7 @@
 " ----------
 "
 " .vim/
-"     plugged/                # Plugins installed with vim-plug
+"     plugged/             # Plugins installed with vim-plug
 "     plugins              # Local plugins
 "     ftplugin/            # Per-filetype settings (these run when any buffer's filetype is set)
 "                          # Should only use setlocal
@@ -747,5 +747,8 @@ highlight htmlH4 guifg=#e9f2b3 gui=bold ctermfg=33 ctermbg=None cterm=bold
 
 " Limelight config
 let g:limelight_conceal_ctermfg = 'gray'
+
+" Goyo
+let g:goyo_width = 80
 
 " }}}
