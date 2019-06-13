@@ -1,36 +1,3 @@
-
-" Comment current line
-nnoremap <buffer> <localleader>c I#<ESC>
-
-" Map K to use taglist (keyword lookup)
-nnoremap <buffer> K <C-]>
-
-" Fast folding by indent
-setlocal foldmethod=indent
-
-" Quick file access in virtualenvs (should only load for Python files)
-nnoremap <leader>vp :e $VIRTUAL_ENV/lib/python3.6/site-packages/
-
-" Shortcut to insert pdb
-inoremap <C-J> import ipdb; ipdb.set_trace() 
-
-" Customise python-sense
-" ----------------------
-
-" Disable bindings by default
-let g:is_pythonsense_suppress_object_keymaps = 1
-
-" Customise the class text object mappings so we can use 'C' instead of the default 'c'
-" to avoid a clash with the vim-textobj-comment plugin.
-map <buffer> aC <Plug>(PythonsenseOuterClassTextObject)
-map <buffer> iC <Plug>(PythonsenseInnerClassTextObject)
-
-" Restore other useful objects using their default bindings
-map <buffer> af <Plug>(PythonsenseOuterFunctionTextObject)
-map <buffer> if <Plug>(PythonsenseInnerFunctionTextObject)
-map <buffer> ad <Plug>(PythonsenseOuterDocStringTextObject)
-map <buffer> id <Plug>(PythonsenseInnerDocStringTextObject)
-
 " Keyboard shortcuts for quickly running tests
 " --------------------------------------------
 
@@ -154,6 +121,11 @@ function! RunMostRecentTest()
         let in_affiliatesite_test = match(t:test_path, 'tests/functional/affiliatesite') != -1
         if in_affiliatesite_test
             let t:test_options = " --ds=tests.settings_affiliates "
+        endif
+
+        let in_webhooksite_test = match(t:test_module, 'tests/functional/webhooksite') != -1
+        if in_webhooksite_test
+            let t:test_options = " --ds=tests.settings_webhooks "
         endif
 
         let in_apisite_test = match(t:test_path, 'tests/functional/apisite') != -1
