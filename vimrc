@@ -184,7 +184,6 @@ Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " See http://vimcolors.com/
 Plug 'jnurmine/Zenburn'
-Plug 'junegunn/limelight.vim'
 
 " Debugging
 " ---------
