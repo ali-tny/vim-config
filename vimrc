@@ -118,7 +118,6 @@ Plug 'bps/vim-textobj-python'
 " Plus others starting with d
 Plug 'mjbrownie/django-template-textobjects'
 
-
 " Navigation
 " ----------
 
@@ -280,7 +279,6 @@ set cmdheight=1
 
 " Appearance {{{
 set ruler                               " Show the cursor position all the time in the status bar
-set pastetoggle=<F11>                   " Toggle paste mode using F11
 set confirm                             " Prompt for unsaved files
 set title                               " Set window title to filename
 set nonumber                            " Set line numbers
