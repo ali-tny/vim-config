@@ -109,8 +109,8 @@ Plug 'kana/vim-textobj-line'
 " Use 'e' for entire buffer
 Plug 'kana/vim-textobj-entire'
 
-" Use 'f' for function, 'c' for class, 'd' for docstring
-Plug 'jeetsukumaran/vim-pythonsense'
+" Use 'f' for function, 'c' for class
+Plug 'bps/vim-textobj-python'
 
 " Use 'c' for comment block
 Plug 'glts/vim-textobj-comment'
