@@ -15,6 +15,8 @@
 "   config in your .vim folder rather than putting everything in one massive
 "   .vimrc
 "
+" - https://www.reddit.com/r/vim/wiki/vimrctips
+"
 " Notable RC files:
 " - https://bitbucket.org/sjl/dotfiles/src/562b7094aad5c602c6228c1d89f69d0abb3bab6b/vim/vimrc?at=default&fileviewer=file-view-default 
 " - https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
@@ -205,10 +207,6 @@ call plug#end()
 
 " Core {{{
 " ----
-" Use Vim settings, rather then Vi settings (much better! we don't need to be
-" backwards compatible).  This must be first, because it changes other options
-" as a side effect.
-set nocompatible
 
 " Switch syntax highlighting on when the terminal has colors
 if &t_Co > 2 || has("syntax")
@@ -236,6 +234,7 @@ set showmode                            " Show mode changes
 set matchtime=1                         " Jump to matching bracket for 1/10ths of a second
 set autoindent                          " Always set autoindenting on
 set copyindent                          " Copy previous indentation
+set nosmartindent
 set nowrap                              " Don't word wrap
 set shiftround                          " Round indent to multiple of 'shiftwidth'
 set smarttab                            " Allow backspacing of a shiftwidth of spaces
@@ -722,7 +721,6 @@ augroup windows
     autocmd!
     " Resize splits when a window is created, closed or resized
     autocmd WinEnter,VimResized * :wincmd =
-
 augroup END
 
 " }}}
