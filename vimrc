@@ -129,13 +129,15 @@ Plug 'mjbrownie/django-template-textobjects'
 " Quick file/buffer/tag searching (faster than CtrlP)
 " ctrl-v - open file in split
 " See https://github.com/junegunn/fzf.vim#commands
-" :GFiles - git files
-" :Colors - colorschemes
-" :Lines  - lines in open buffers
-" :Commits - git commits
-" :History - buffer history
 "
-Plug 'junegunn/fzf'
+"     :GFiles - git files
+"     :Colors - colorschemes
+"     :Lines  - lines in open buffers
+"     :Commits - git commits
+"     :History - buffer history
+"
+" Some leader-mappings defined for these below too.
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Shows 'Match X of Y' in command bar
@@ -432,6 +434,7 @@ iabbrev acocunt account
 nnoremap <leader>f :Files<cr> 
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>s :Tags<cr>
+nnoremap <leader>l :Lines<cr>
 
 " Open FZF window at bottom of screen
 let g:fzf_layout = { 'down': '~40%' }
