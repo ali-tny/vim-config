@@ -431,13 +431,24 @@ iabbrev acocunt account
 " ---
 
 " Map leader keys to common actions
+"
+" Search for files
 nnoremap <leader>f :Files<cr> 
+
+" Search within files
+nnoremap <leader>g :Rg<cr>
+
+" Search open buffers
 nnoremap <leader>b :Buffers<cr>
+
+" Search tags
 nnoremap <leader>s :Tags<cr>
-nnoremap <leader>l :Lines<cr>
 
 " Open FZF window at bottom of screen
 let g:fzf_layout = { 'down': '~40%' }
+
+" Redefine :Rg command to not search filenames but only content (see https://github.com/junegunn/fzf.vim/issues/346)
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " Markdown
 " --------
