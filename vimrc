@@ -167,6 +167,8 @@ Plug 'plasticboy/vim-markdown'
 " :Gstatus
 " :Gbrowse! - copy Github URL to clipboard
 Plug 'tpope/vim-fugitive'
+
+" Github integration for fugitive
 Plug 'tpope/vim-rhubarb'
 
 " More sophisticated last-position opening which ignores gitcommit
@@ -449,6 +451,12 @@ let g:fzf_layout = { 'down': '~40%' }
 
 " Redefine :Rg command to not search filenames but only content (see https://github.com/junegunn/fzf.vim/issues/346)
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+" Fugitive
+" --------
+
+" Copy URL for selected lines on master branch to clipboard.
+vnoremap <leader>gb :Gbrowse! master:%<cr> 
 
 " Markdown
 " --------
