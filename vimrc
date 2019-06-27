@@ -92,6 +92,7 @@ Plug 'junegunn/goyo.vim'
 
 " Non-standard text-objects
 " -------------------------
+" See https://codeinthehole.com/tips/vim-text-objects/
 
 " Provides lots of text-objects
 "   Use one of , . ; : + - = ~ _ * # / for delimited strings
@@ -518,6 +519,7 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " MatchParen
+" ----------
 
 " Set timeout (in ms) as 44_Highlight_Matching_Pair seems to slow editing some buffers
 " down. See https://vi.stackexchange.com/questions/5128/matchpairs-makes-vim-slow
