@@ -735,10 +735,10 @@ augroup cursorline
     autocmd WinEnter,InsertLeave * set cursorline
 augroup END
  
-" Auto-source vimrc after save
+" Auto-source vim files after save
 augroup VimReload
     autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    autocmd BufWritePost *.vim source %
 augroup END
 
 augroup windows
