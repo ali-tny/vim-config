@@ -73,10 +73,23 @@ function! UnitTestModuleFilepath(filepath)
     return "tests/unit/" . join(path_segments[1:-2], "/") . "/test_" . filename
 endfunction
 
-nnoremap <buffer> <leader>T :call RunMostRecentTestModule()<cr>
+function! ApplicationModuleFilepath(filepath)
+    " Return the filepath of the corresponding unit test module to current
+    " file.
+    let path_segments = split(a:filepath, "/")
+    let index = index(path_segments, "tests")
+    let filename = substitute(path_segments[-1], "test_", "", "")
+    return "octoenergy/" . join(path_segments[index + 2:-2], "/") . "/" . filename
+endfunction
 
-" Jump to the corresponding unit test module
-nnoremap <buffer> <leader>e :exec ":vsplit " . UnitTestModuleFilepath(expand("%"))<cr>
+function! ComplementaryFilepath(filepath)
+    " Return the filepath of the corresponding unit-test or application module
+    if match(a:filepath, "tests/") != -1
+        return ApplicationModuleFilepath(a:filepath)
+    else
+        return UnitTestModuleFilepath(a:filepath)
+    end
+endfunction
 
 function! RunMostRecentTest()
     " Run the most recent test function
@@ -145,4 +158,14 @@ function! RunMostRecentTest()
     end
 endfunction
 
+" Mappings
+" --------
+
+" Run most recent test
 nnoremap <buffer> <leader>t :call RunMostRecentTest()<cr>
+
+" Run most recent test module
+nnoremap <buffer> <leader>T :call RunMostRecentTestModule()<cr>
+
+" Jump to the corresponding unit-test or application module
+nnoremap <buffer> <leader>e :exec ":vsplit " . ComplementaryFilepath(expand("%"))<cr>
