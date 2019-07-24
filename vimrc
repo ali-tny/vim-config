@@ -353,6 +353,7 @@ set magic
 set hlsearch                            " Highlight all search results (sometimes annoying)
 set synmaxcol=200                       " Don't try to highlight long lines (for performance)
 set cursorline                          " Highlight the line being edited
+set virtualedit=all                     " Allow cursor to move anywhere
 
 " Highlight conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
