@@ -647,6 +647,11 @@ nnoremap <BS> :nohlsearch<CR>
 " selection).
 nnoremap gV `[v`]
 
+" Merge conflicts. Use ]c to jump between chunks.
+map <leader>1 :diffget LOCAL<cr>
+map <leader>2 :diffget BASE<cr>
+map <leader>3 :diffget REMOTE<cr>
+
 " VISUAL MODE
 " -----------
 
