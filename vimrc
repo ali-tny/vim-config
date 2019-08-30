@@ -362,7 +362,7 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "   * use "-t html" to only search one filetype
 "   * use "-w" to match on word boundaries
 if executable('rg') 
-    set grepprg=rg\ --vimgrep\ --smart-case
+    set grepprg=rg\ --vimgrep\ --smart-case 
     set grepformat=%f:%l:%c:%m
 endif 
 
@@ -628,8 +628,8 @@ nnoremap <Space> <PageDown>
 
 " Jump between entries in quickfix list. Works well when using :grep and open
 " the folds obscuring the matching line.
-nnoremap <silent> <C-n> :cnext<CR>zO
-nnoremap <silent> <C-p> :cprev<CR>
+nnoremap <silent> <C-n> :cnext<CR>zz
+nnoremap <silent> <C-p> :cprev<CR>zz
 
 " Open folds after jumping
 nnoremap n nzO
