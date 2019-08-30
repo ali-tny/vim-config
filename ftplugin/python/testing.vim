@@ -33,34 +33,50 @@ function! RunMostRecentTestModule()
     else
         let t:test_options = ""
 
+        let in_consumersite_test = match(t:test_path, 'tests/functional/consumer') != -1
+        if in_consumersite_test
+            let t:test_options = " --ds=tests.settings --dc=OctoEnergyConsumerSite "
+        endif
+
         let in_supportsite_test = match(t:test_module, 'tests/functional/support') != -1
         if in_supportsite_test
-            let t:test_options = " --ds=tests.settings_support "
+            let t:test_options = " --ds=tests.settings --dc=OctoEnergySupportSite "
         endif
 
         let in_affiliatesite_test = match(t:test_module, 'tests/functional/affiliatesite') != -1
         if in_affiliatesite_test
-            let t:test_options = " --ds=tests.settings_affiliates "
+            let t:test_options = " --ds=tests.settings --dc=OctoEnergyAffiliateSite "
         endif
 
         let in_webhooksite_test = match(t:test_module, 'tests/functional/webhooksite') != -1
         if in_webhooksite_test
-            let t:test_options = " --ds=tests.settings_webhooks "
+            let t:test_options = " --ds=tests.settings --dc=OctoEnergyWebhookSite "
         endif
 
         let in_apisite_test = match(t:test_module, 'tests/functional/apisite') != -1
         if in_apisite_test
-            let t:test_options = " --ds=tests.settings_api "
+            let t:test_options = " --ds=tests.settings --dc=OctoEnergyAPISite "
         endif
 
         let in_harpersite_test = match(t:test_module, 'tests/functional/harpersite') != -1
         if in_harpersite_test
-            let t:test_options = " --ds=tests.settings_harper "
+            let t:test_options = " --ds=tests.settings --dc=HarperConsumerSite "
+        endif
+
+        let in_tasks_test = match(t:test_module, 'tests/functional/tasks') != -1
+        if in_tasks_test
+            let t:test_options = " --ds=tests.settings --dc=OctoEnergyWorker "
+        endif
+
+        let in_mc_test = match(t:test_module, 'tests/functional/commands') != -1
+        if in_mc_test
+            let t:test_options = " --ds=tests.settings --dc=OctoEnergyManagementCommand "
         endif
 
         exec "silent :!clear"
         exec "silent :!echo -e \"Running tests from \033[0;34m" . t:test_module . "\033[0m ...\""
         let cmd = "py.test " . t:test_options . t:test_module 
+        exec "echo " . cmd
         exec ":!" . cmd
     end
 endfunction
@@ -126,34 +142,50 @@ function! RunMostRecentTest()
         " Check if in a package that requires specific pytest options
         let t:test_options = ""
 
-        let in_supportsite_test = match(t:test_path, 'tests/functional/support') != -1
-        if in_supportsite_test
-            let t:test_options = " --ds=tests.settings_support "
+        let in_consumersite_test = match(t:test_path, 'tests/functional/consumer') != -1
+        if in_consumersite_test
+            let t:test_options = " --ds=tests.settings --dc=OctoEnergyConsumerSite "
         endif
 
-        let in_affiliatesite_test = match(t:test_path, 'tests/functional/affiliatesite') != -1
+        let in_supportsite_test = match(t:test_path, 'tests/functional/support') != -1
+        if in_supportsite_test
+            let t:test_options = " --ds=tests.settings --dc=OctoEnergySupportSite "
+        endif
+
+        let in_affiliatesite_test = match(t:test_path, 'tests/functional/affiliatesite ') != -1
         if in_affiliatesite_test
-            let t:test_options = " --ds=tests.settings_affiliates "
+            let t:test_options = " --ds=tests.settings --dc=OctoEnergyAffiliateSite "
         endif
 
         let in_webhooksite_test = match(t:test_module, 'tests/functional/webhooksite') != -1
         if in_webhooksite_test
-            let t:test_options = " --ds=tests.settings_webhooks "
+            let t:test_options = " --ds=tests.settings --dc=OctoEnergyWebhookSite "
         endif
 
         let in_apisite_test = match(t:test_path, 'tests/functional/apisite') != -1
         if in_apisite_test
-            let t:test_options = " --ds=tests.settings_api "
+            let t:test_options = " --ds=tests.settings --dc=OctoEnergyAPISite "
         endif
 
         let in_harpersite_test = match(t:test_path, 'tests/functional/harpersite') != -1
         if in_harpersite_test
-            let t:test_options = " --ds=tests.settings_harper "
+            let t:test_options = " --ds=tests.settings --dc=HarperConsumerSite "
+        endif
+
+        let in_tasks_test = match(t:test_module, 'tests/functional/tasks') != -1
+        if in_tasks_test
+            let t:test_options = " --ds=tests.settings --dc=OctoEnergyWorker "
+        endif
+
+        let in_mc_test = match(t:test_module, 'tests/functional/commands') != -1
+        if in_mc_test
+            let t:test_options = " --ds=tests.settings --dc=OctoEnergyManagementCommand "
         endif
 
         exec "silent :!clear"
         exec "silent :!echo -e \"Running \033[0;35m" . t:test_function . "\033[0m from \033[0;34m" . t:test_module . "\033[0m ...\""
         let cmd = "py.test " . t:test_options . t:test_module . " -k " . t:test_function
+        exec "silent :!echo " . cmd
         exec ":!" . cmd
     end
 endfunction
