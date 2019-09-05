@@ -71,6 +71,9 @@
 
 " Vim-plug and plugins {{{
 " ------------------------
+" Plugins managed with vim-plug: https://github.com/junegunn/vim-plug
+" Available commands: https://github.com/junegunn/vim-plug#commands
+"   :PlugUpdate - update plugins
 
 call plug#begin("~/.vim/plugged")
 
