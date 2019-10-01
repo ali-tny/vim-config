@@ -63,6 +63,11 @@ function! RunMostRecentTestModule()
             let t:test_options = " --ds=tests.settings --dc=HarperConsumerSite "
         endif
 
+        let in_commonsite_test = match(t:test_module, 'tests/functional/commonsite') != -1
+        if in_commonsite_test
+            let t:test_options = " --ds=tests.settings --dc=OctoEnergyConsumerSite "
+        endif
+
         let in_tasks_test = match(t:test_module, 'tests/functional/tasks') != -1
         if in_tasks_test
             let t:test_options = " --ds=tests.settings --dc=OctoEnergyWorker "
@@ -170,6 +175,11 @@ function! RunMostRecentTest()
         let in_harpersite_test = match(t:test_path, 'tests/functional/harpersite') != -1
         if in_harpersite_test
             let t:test_options = " --ds=tests.settings --dc=HarperConsumerSite "
+        endif
+
+        let in_commonsite_test = match(t:test_module, 'tests/functional/commonsite') != -1
+        if in_commonsite_test
+            let t:test_options = " --ds=tests.settings --dc=OctoEnergyConsumerSite "
         endif
 
         let in_tasks_test = match(t:test_module, 'tests/functional/tasks') != -1
