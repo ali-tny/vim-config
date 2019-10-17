@@ -632,7 +632,7 @@ nnoremap <Space> <PageDown>
 
 " Jump between entries in quickfix list. Works well when using :grep and open
 " the folds obscuring the matching line.
-nnoremap <silent> <C-n> :cnext<CR>zz
+nnoremap <silent> <C-n> :cnext<CR>zo
 nnoremap <silent> <C-p> :cprev<CR>zz
 
 " Open folds after jumping
