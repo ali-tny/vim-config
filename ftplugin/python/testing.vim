@@ -1,97 +1,12 @@
 " Keyboard shortcuts for quickly running tests
 " --------------------------------------------
 
-function! RunMostRecentTestModule()
-    " Run tests for the most *recent* test module.
-    "
-    " By "recent", I mean either:
-    " 
-    " - The test module that is currently being edited;
-    " - The corresponding unit test module for the application module being
-    "   edited.
-
-    " Write all files before running any tests
-    if expand("%") != ""
-        :wall
-    end
-
-    " Check if we're editing a test module. If so, store the path in a
-    " tab-scoped variable.
-    if match(expand("%:t"), 'test_.*\.py$') != -1
-        let t:test_module=@%
-    else
-        " If we're not editing a test module, look for the corresponding unit test
-        " module for the production module we're in
-        let test_module_filepath = UnitTestModuleFilepath(expand("%"))
-        if filereadable(test_module_filepath)
-            let t:test_module=test_module_filepath
-        end
-    end
-
-    if !exists("t:test_module")
-        echo "Don't know which test module to run!"
-    else
-        let t:test_options = ""
-
-        let in_consumersite_test = match(t:test_path, 'tests/functional/consumer') != -1
-        if in_consumersite_test
-            let t:test_options = " --ds=tests.settings --dc=OctoEnergyConsumerSite "
-        endif
-
-        let in_supportsite_test = match(t:test_module, 'tests/functional/support') != -1
-        if in_supportsite_test
-            let t:test_options = " --ds=tests.settings --dc=OctoEnergySupportSite "
-        endif
-
-        let in_affiliatesite_test = match(t:test_module, 'tests/functional/affiliatesite') != -1
-        if in_affiliatesite_test
-            let t:test_options = " --ds=tests.settings --dc=OctoEnergyAffiliateSite "
-        endif
-
-        let in_webhooksite_test = match(t:test_module, 'tests/functional/webhooksite') != -1
-        if in_webhooksite_test
-            let t:test_options = " --ds=tests.settings --dc=OctoEnergyWebhookSite "
-        endif
-
-        let in_apisite_test = match(t:test_module, 'tests/functional/apisite') != -1
-        if in_apisite_test
-            let t:test_options = " --ds=tests.settings --dc=OctoEnergyAPISite "
-        endif
-
-        let in_harpersite_test = match(t:test_module, 'tests/functional/harpersite') != -1
-        if in_harpersite_test
-            let t:test_options = " --ds=tests.settings --dc=HarperConsumerSite "
-        endif
-
-        let in_commonsite_test = match(t:test_module, 'tests/functional/commonsite') != -1
-        if in_commonsite_test
-            let t:test_options = " --ds=tests.settings --dc=OctoEnergyConsumerSite "
-        endif
-
-        let in_tasks_test = match(t:test_module, 'tests/functional/tasks') != -1
-        if in_tasks_test
-            let t:test_options = " --ds=tests.settings --dc=OctoEnergyWorker "
-        endif
-
-        let in_mc_test = match(t:test_module, 'tests/functional/commands') != -1
-        if in_mc_test
-            let t:test_options = " --ds=tests.settings --dc=OctoEnergyManagementCommand "
-        endif
-
-        exec "silent :!clear"
-        exec "silent :!echo -e \"Running tests from \033[0;34m" . t:test_module . "\033[0m ...\""
-        let cmd = "py.test " . t:test_options . t:test_module 
-        exec "echo " . cmd
-        exec ":!" . cmd
-    end
-endfunction
-
 function! UnitTestModuleFilepath(filepath)
     " Return the filepath of the corresponding unit test module to current
     " file.
     let path_segments = split(a:filepath, "/")
     let filename = path_segments[-1]
-    return "tests/unit/" . join(path_segments[1:-2], "/") . "/test_" . filename
+    return "tests/unit/common/" . join(path_segments[1:-2], "/") . "/test_" . filename
 endfunction
 
 function! ApplicationModuleFilepath(filepath)
@@ -110,6 +25,76 @@ function! ComplementaryFilepath(filepath)
     else
         return UnitTestModuleFilepath(a:filepath)
     end
+endfunction
+
+function! PyTestOptions(filepath)
+    " Return the options to run PyTest with
+    let in_nectr_unit = match(a:filepath, 'tests/unit/nectr') != -1
+    if in_nectr_unit
+        return " --ds=tests.settings --dc=NectrInterfaceAgnostic "
+    endif
+
+    let in_consumersite_test = match(a:filepath, 'tests/functional/consumer') != -1
+    if in_consumersite_test
+        return " --ds=tests.settings --dc=OctoEnergyConsumerSite "
+    endif
+
+    let in_oe_supportsite_test = match(a:filepath, 'tests/functional/supportsite/octoenergy') != -1
+    if in_oe_supportsite_test
+        return " --ds=tests.settings --dc=OctoEnergySupportSite "
+    endif
+
+    let in_nectr_supportsite_test = match(a:filepath, 'tests/functional/supportsite/nectr') != -1
+    if in_nectr_supportsite_test
+        return " --ds=tests.settings --dc=NectrSupportSite "
+    endif
+
+    let in_affiliatesite_test = match(a:filepath, 'tests/functional/affiliatesite ') != -1
+    if in_affiliatesite_test
+        return " --ds=tests.settings --dc=OctoEnergyAffiliateSite "
+    endif
+
+    let in_webhooksite_test = match(a:filepath, 'tests/functional/webhooksite') != -1
+    if in_webhooksite_test
+        return " --ds=tests.settings --dc=OctoEnergyWebhookSite "
+    endif
+
+    let in_oe_apisite_test = match(a:filepath, 'tests/functional/apisite/octoenergy') != -1
+    if in_oe_apisite_test
+        return " --ds=tests.settings --dc=OctoEnergyAPISite "
+    endif
+
+    let in_nectr_apisite_test = match(a:filepath, 'tests/functional/apisite/nectr') != -1
+    if in_nectr_apisite_test
+        return " --ds=tests.settings --dc=NectrAPISite "
+    endif
+
+    let in_harpersite_test = match(a:filepath, 'tests/functional/harpersite') != -1
+    if in_harpersite_test
+        return " --ds=tests.settings --dc=HarperConsumerSite "
+    endif
+
+    let in_commonsite_test = match(a:filepath, 'tests/functional/commonsite') != -1
+    if in_commonsite_test
+        return " --ds=tests.settings --dc=OctoEnergyConsumerSite "
+    endif
+
+    let in_tasks_test = match(a:filepath, 'tests/functional/tasks') != -1
+    if in_tasks_test
+        return " --ds=tests.settings --dc=OctoEnergyWorker "
+    endif
+
+    let in_mc_test = match(a:filepath, 'tests/functional/commands') != -1
+    if in_mc_test
+        return " --ds=tests.settings --dc=OctoEnergyManagementCommand "
+    endif
+
+    let in_nectr_integration_test = match(a:filepath, 'tests/integration/nectr') != -1
+    if in_nectr_integration_test
+        return " --ds=tests.settings --dc=NectrInterfaceAgnostic "
+    endif
+
+    return ""
 endfunction
 
 function! RunMostRecentTest()
@@ -144,57 +129,52 @@ function! RunMostRecentTest()
     elseif !exists("t:test_function")
         echo "Don't know which test function to run!"
     else
-        " Check if in a package that requires specific pytest options
-        let t:test_options = ""
-
-        let in_consumersite_test = match(t:test_path, 'tests/functional/consumer') != -1
-        if in_consumersite_test
-            let t:test_options = " --ds=tests.settings --dc=OctoEnergyConsumerSite "
-        endif
-
-        let in_supportsite_test = match(t:test_path, 'tests/functional/support') != -1
-        if in_supportsite_test
-            let t:test_options = " --ds=tests.settings --dc=OctoEnergySupportSite "
-        endif
-
-        let in_affiliatesite_test = match(t:test_path, 'tests/functional/affiliatesite ') != -1
-        if in_affiliatesite_test
-            let t:test_options = " --ds=tests.settings --dc=OctoEnergyAffiliateSite "
-        endif
-
-        let in_webhooksite_test = match(t:test_module, 'tests/functional/webhooksite') != -1
-        if in_webhooksite_test
-            let t:test_options = " --ds=tests.settings --dc=OctoEnergyWebhookSite "
-        endif
-
-        let in_apisite_test = match(t:test_path, 'tests/functional/apisite') != -1
-        if in_apisite_test
-            let t:test_options = " --ds=tests.settings --dc=OctoEnergyAPISite "
-        endif
-
-        let in_harpersite_test = match(t:test_path, 'tests/functional/harpersite') != -1
-        if in_harpersite_test
-            let t:test_options = " --ds=tests.settings --dc=HarperConsumerSite "
-        endif
-
-        let in_commonsite_test = match(t:test_module, 'tests/functional/commonsite') != -1
-        if in_commonsite_test
-            let t:test_options = " --ds=tests.settings --dc=OctoEnergyConsumerSite "
-        endif
-
-        let in_tasks_test = match(t:test_module, 'tests/functional/tasks') != -1
-        if in_tasks_test
-            let t:test_options = " --ds=tests.settings --dc=OctoEnergyWorker "
-        endif
-
-        let in_mc_test = match(t:test_module, 'tests/functional/commands') != -1
-        if in_mc_test
-            let t:test_options = " --ds=tests.settings --dc=OctoEnergyManagementCommand "
-        endif
+        let t:test_options = PyTestOptions(t:test_path)
+        echom t:test_options
 
         exec "silent :!clear"
         exec "silent :!echo -e \"Running \033[0;35m" . t:test_function . "\033[0m from \033[0;34m" . t:test_module . "\033[0m ...\""
         let cmd = "py.test " . t:test_options . t:test_module . " -k " . t:test_function
+        exec "silent :!echo " . cmd
+        exec ":!" . cmd
+    end
+endfunction
+
+function! RunMostRecentTestModule()
+    " Run tests for the most *recent* test module.
+    "
+    " By "recent", I mean either:
+    " 
+    " - The test module that is currently being edited;
+    " - The corresponding unit test module for the application module being
+    "   edited.
+
+    " Write all files before running any tests
+    if expand("%") != ""
+        :wall
+    end
+
+    " Check if we're editing a test module. If so, store the path in a
+    " tab-scoped variable.
+    if match(expand("%:t"), 'test_.*\.py$') != -1
+        let t:test_module=@%
+    else
+        " If we're not editing a test module, look for the corresponding unit test
+        " module for the production module we're in
+        let test_module_filepath = UnitTestModuleFilepath(expand("%"))
+        if filereadable(test_module_filepath)
+            let t:test_module=test_module_filepath
+        end
+    end
+
+    if !exists("t:test_module")
+        echo "Don't know which test module to run!"
+    else
+        let t:test_options = PyTestOptions(t:test_module)
+
+        exec "silent :!clear"
+        exec "silent :!echo -e \"Running tests from \033[0;34m" . t:test_module . "\033[0m ...\""
+        let cmd = "py.test " . t:test_options . t:test_module 
         exec "silent :!echo " . cmd
         exec ":!" . cmd
     end
