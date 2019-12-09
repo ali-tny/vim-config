@@ -87,6 +87,13 @@ call plug#begin("~/.vim/plugged")
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
+" Mapping for jumping between lists, eg:
+"   [q  => previous quickfix location
+"   ]q  => next quickfix location
+"   [Q  => first quickfix location
+"   ]Q  => last quickfix location
+Plug 'tpope/vim-unimpaired'
+
 " Extend % matching to include HTML tags
 Plug 'tmhedberg/matchit'
 
