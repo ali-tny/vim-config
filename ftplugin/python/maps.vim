@@ -8,7 +8,7 @@ nnoremap <buffer> <localleader>c I#<ESC>
 nnoremap <leader>vp :e $VIRTUAL_ENV/lib/python3.6/site-packages/
 
 " Shortcut to insert pdb
-inoremap <C-J> import ipdb; ipdb.set_trace() 
+inoremap <C-J> import ipdb; ipdb.set_trace() # isort:skip # noqa
 
 " Map K to use taglist (keyword lookup)
 nnoremap <buffer> K <C-]>
