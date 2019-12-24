@@ -4,8 +4,8 @@ setlocal foldmethod=indent
 " Comment current line
 nnoremap <buffer> <localleader>c I#<ESC>
 
-" Quick file access in virtualenvs (should only load for Python files)
-nnoremap <leader>vp :e $VIRTUAL_ENV/lib/python3.6/site-packages/
+" Quick file access in virtualenvs
+nnoremap <leader>vp :e $VIRTUAL_ENV/lib/python3.7/site-packages/
 
 " Shortcut to insert pdb
 inoremap <C-J> import ipdb; ipdb.set_trace() # isort:skip # noqa
