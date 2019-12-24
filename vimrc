@@ -257,7 +257,6 @@ set smarttab                            " Allow backspacing of a shiftwidth of s
 set noeol                               " Prevent a carriage return at end of last line
 set lazyredraw                          " Don't redraw while executing macros (for performance)
 set nojoinspaces                        " Don't insert two spaces after sentence joins
-set diffopt+=iwhite
 
 set tabstop=4                           " Length of tab in spaces
 set softtabstop=4                       " Number of spaces to add when you hit <tab>
