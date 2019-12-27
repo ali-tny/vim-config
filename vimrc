@@ -244,7 +244,8 @@ let g:mapleader = ","
 
 " Editing behaviour {{{
 set backspace=indent,eol,start          " Allow backspacing over everything in insert mode
-set scrolloff=3                         " Controls when to scroll winow
+set scrolloff=1                         " Controls when to scroll window vertically
+set scrolloff=5                         " Controls when to scroll window sideways
 set showmatch                           " Show matching delimiters
 set showmode                            " Show mode changes
 set matchtime=1                         " Jump to matching bracket for 1/10ths of a second
@@ -277,7 +278,7 @@ set timeoutlen=500
 set iskeyword+=-
 
 " Treat numbers as decimal (eg when incrementing with C-a)
-set nrformats=
+set nrformats-=octal
 
 " }}}
 
@@ -356,7 +357,7 @@ set noswapfile
 " Searching and highlighting {{{
 set wrapscan                            " Wrap searching
 set incsearch                           " Do incremental searching
-set gdefault                            " Global setting on by default in subsituting
+set gdefault                            " Global setting on by default in substituting
 set ignorecase                          " Ignore case when searching..
 set smartcase                           " ..but use case when search term has an upper-case char
 set magic
