@@ -517,8 +517,9 @@ let g:polyglot_disabled = ['markdown']
 " ---
 " Note, language-specific linters are defined in ftplugin modules
 
-" Enable Ale suggestions in omnicomplete
+let g:ale_enabled = 1
 let g:ale_completion_enabled = 0
+let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_fix_on_save = 1
