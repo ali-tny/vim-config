@@ -5,11 +5,8 @@ setlocal colorcolumn=100
 " Spellcheck comments
 setlocal spell
 
-" Delete trailing whitespace when saving
-autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
-
 " Ale
 " ---
 
 let b:ale_linters = ['flake8']
-let b:ale_fixers = ['black', 'isort']
+let b:ale_fixers = ['black', 'isort', 'trim_whitespace']

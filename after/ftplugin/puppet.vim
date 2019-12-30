@@ -1,3 +1,3 @@
 " Delete trailing whitespace when saving
-autocmd BufWrite *.pp :call DeleteTrailingWhiteSpace()
+let b:ale_fixers = ['trim_whitespace']
 
