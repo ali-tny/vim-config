@@ -49,7 +49,7 @@ function! PyTestOptions(filepath)
         return " --ds=tests.settings --dc=NectrSupportSite "
     endif
 
-    let in_affiliatesite_test = match(a:filepath, 'tests/functional/affiliatesite ') != -1
+    let in_affiliatesite_test = match(a:filepath, 'tests/functional/affiliatesite') != -1
     if in_affiliatesite_test
         return " --ds=tests.settings --dc=OctoEnergyAffiliateSite "
     endif
@@ -130,7 +130,6 @@ function! RunMostRecentTest()
         echo "Don't know which test function to run!"
     else
         let t:test_options = PyTestOptions(t:test_path)
-        echom t:test_options
 
         exec "silent :!clear"
         exec "silent :!echo -e \"Running \033[0;35m" . t:test_function . "\033[0m from \033[0;34m" . t:test_module . "\033[0m ...\""
