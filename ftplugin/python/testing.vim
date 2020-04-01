@@ -58,40 +58,41 @@ function! PyTestOptions(filepath)
         return " --ds=tests.settings --dc=GoodEnergyInterfaceAgnostic "
     endif
 
-    " Functional tests
+    " Functional tests - consumer-sites
 
-    let in_consumersite_test = match(a:filepath, 'tests/functional/consumer') != -1
-    if in_consumersite_test
+    if match(a:filepath, 'tests/functional/consumersite') != -1
         return " --ds=tests.settings --dc=OctoEnergyConsumerSite "
     endif
 
-    let in_oe_supportsite_test = match(a:filepath, 'tests/functional/supportsite/octoenergy') != -1
-    if in_oe_supportsite_test
-        return " --ds=tests.settings --dc=OctoEnergySupportSite "
+    if match(a:filepath, 'tests/functional/harpersite') != -1
+        return " --ds=tests.settings --dc=HarperConsumerSite "
     endif
 
-    let in_nectr_supportsite_test = match(a:filepath, 'tests/functional/supportsite/nectr') != -1
-    if in_nectr_supportsite_test
-        return " --ds=tests.settings --dc=NectrSupportSite "
+    if match(a:filepath, 'tests/functional/commonsite') != -1
+        return " --ds=tests.settings --dc=OctoEnergyConsumerSite "
     endif
 
-    let in_affiliatesite_test = match(a:filepath, 'tests/functional/affiliatesite') != -1
-    if in_affiliatesite_test
+    if match(a:filepath, 'tests/functional/affiliatesite') != -1
         return " --ds=tests.settings --dc=OctoEnergyAffiliateSite "
     endif
 
-    let in_webhooksite_test = match(a:filepath, 'tests/functional/webhooksite') != -1
-    if in_webhooksite_test
-        return " --ds=tests.settings --dc=OctoEnergyWebhookSite "
+    " Functional tests - support-sites
+
+    if match(a:filepath, 'tests/functional/supportsite/octoenergy') != -1
+        return " --ds=tests.settings --dc=OctoEnergySupportSite "
     endif
 
-    let in_oe_apisite_test = match(a:filepath, 'tests/functional/apisite/octoenergy') != -1
-    if in_oe_apisite_test
+    if match(a:filepath, 'tests/functional/supportsite/nectr') != -1
+        return " --ds=tests.settings --dc=NectrSupportSite "
+    endif
+
+    " Functional tests - API-sites
+
+    if match(a:filepath, 'tests/functional/apisite/octoenergy') != -1
         return " --ds=tests.settings --dc=OctoEnergyAPISite "
     endif
 
-    let in_nectr_apisite_test = match(a:filepath, 'tests/functional/apisite/nectr') != -1
-    if in_nectr_apisite_test
+    if match(a:filepath, 'tests/functional/apisite/nectr') != -1
         return " --ds=tests.settings --dc=NectrAPISite "
     endif
 
@@ -99,23 +100,17 @@ function! PyTestOptions(filepath)
         return " --ds=tests.settings --dc=GoodEnergyAPISite "
     endif
 
-    let in_harpersite_test = match(a:filepath, 'tests/functional/harpersite') != -1
-    if in_harpersite_test
-        return " --ds=tests.settings --dc=HarperConsumerSite "
+    " Functional tests - misc
+
+    if match(a:filepath, 'tests/functional/webhooksite') != -1
+        return " --ds=tests.settings --dc=OctoEnergyWebhookSite "
     endif
 
-    let in_commonsite_test = match(a:filepath, 'tests/functional/commonsite') != -1
-    if in_commonsite_test
-        return " --ds=tests.settings --dc=OctoEnergyConsumerSite "
-    endif
-
-    let in_tasks_test = match(a:filepath, 'tests/functional/tasks') != -1
-    if in_tasks_test
+    if match(a:filepath, 'tests/functional/tasks') != -1
         return " --ds=tests.settings --dc=OctoEnergyWorker "
     endif
 
-    let in_mc_test = match(a:filepath, 'tests/functional/commands') != -1
-    if in_mc_test
+    if match(a:filepath, 'tests/functional/commands') != -1
         return " --ds=tests.settings --dc=OctoEnergyManagementCommand "
     endif
 
