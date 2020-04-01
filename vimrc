@@ -462,6 +462,9 @@ nnoremap <leader>s :Tags<cr>
 " Open FZF window at bottom of screen
 let g:fzf_layout = { 'down': '~40%' }
 
+" Disable preview window (takes up too much screen)
+let g:fzf_preview_window = ''
+
 " Redefine :Rg command to not search filenames but only content (see https://github.com/junegunn/fzf.vim/issues/346)
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
