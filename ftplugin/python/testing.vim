@@ -29,18 +29,18 @@ endfunction
 
 function! PyTestOptions(filepath)
     " Return the options to run PyTest with
-
+    
     " Unit tests
-
-    if match(a:filepath, 'tests/unit/octoenergy') != -1
+    
+    if match(a:filepath, 'tests/unit/octoenergy') != -1 
         return " --ds=tests.settings --dc=OctoEnergyInterfaceAgnostic "
     endif
-
+    
     if match(a:filepath, 'tests/unit/nectr') != -1
         return " --ds=tests.settings --dc=NectrInterfaceAgnostic "
     endif
 
-    if match(a:filepath, 'tests/unit/goodenergy') != -1
+    if match(a:filepath, 'tests/unit/goodenergy') != -1 
         return " --ds=tests.settings --dc=GoodEnergyInterfaceAgnostic "
     endif
 
@@ -53,7 +53,7 @@ function! PyTestOptions(filepath)
     if match(a:filepath, 'tests/integration/nectr') != -1
         return " --ds=tests.settings --dc=NectrInterfaceAgnostic "
     endif
-
+    
     if match(a:filepath, 'tests/integration/goodenergy') != -1
         return " --ds=tests.settings --dc=GoodEnergyInterfaceAgnostic "
     endif
@@ -158,7 +158,7 @@ function! RunMostRecentTest()
 
         exec "silent :!clear"
         exec "silent :!echo -e \"Running \033[0;35m" . t:test_function . "\033[0m from \033[0;34m" . t:test_module . "\033[0m ...\""
-        let cmd = "py.test " . t:test_options . t:test_module . " -k " . t:test_function
+        let cmd = "py.test -s " . t:test_options . t:test_module . " -k " . t:test_function
         exec "silent :!echo " . cmd
         exec ":!" . cmd
     end
