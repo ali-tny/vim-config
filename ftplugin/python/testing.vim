@@ -29,10 +29,36 @@ endfunction
 
 function! PyTestOptions(filepath)
     " Return the options to run PyTest with
-    let in_nectr_unit = match(a:filepath, 'tests/unit/nectr') != -1
-    if in_nectr_unit
+
+    " Unit tests
+
+    if match(a:filepath, 'tests/unit/octoenergy') != -1
+        return " --ds=tests.settings --dc=OctoEnergyInterfaceAgnostic "
+    endif
+
+    if match(a:filepath, 'tests/unit/nectr') != -1
         return " --ds=tests.settings --dc=NectrInterfaceAgnostic "
     endif
+
+    if match(a:filepath, 'tests/unit/goodenergy') != -1
+        return " --ds=tests.settings --dc=GoodEnergyInterfaceAgnostic "
+    endif
+
+    " Integration tests
+    "
+    if match(a:filepath, 'tests/integration/octoenergy') != -1
+        return " --ds=tests.settings --dc=OctoEnergyInterfaceAgnostic "
+    endif
+
+    if match(a:filepath, 'tests/integration/nectr') != -1
+        return " --ds=tests.settings --dc=NectrInterfaceAgnostic "
+    endif
+
+    if match(a:filepath, 'tests/integration/goodenergy') != -1
+        return " --ds=tests.settings --dc=GoodEnergyInterfaceAgnostic "
+    endif
+
+    " Functional tests
 
     let in_consumersite_test = match(a:filepath, 'tests/functional/consumer') != -1
     if in_consumersite_test
@@ -69,6 +95,10 @@ function! PyTestOptions(filepath)
         return " --ds=tests.settings --dc=NectrAPISite "
     endif
 
+    if match(a:filepath, 'tests/functional/apisite/goodenergy') != -1
+        return " --ds=tests.settings --dc=GoodEnergyAPISite "
+    endif
+
     let in_harpersite_test = match(a:filepath, 'tests/functional/harpersite') != -1
     if in_harpersite_test
         return " --ds=tests.settings --dc=HarperConsumerSite "
@@ -87,11 +117,6 @@ function! PyTestOptions(filepath)
     let in_mc_test = match(a:filepath, 'tests/functional/commands') != -1
     if in_mc_test
         return " --ds=tests.settings --dc=OctoEnergyManagementCommand "
-    endif
-
-    let in_nectr_integration_test = match(a:filepath, 'tests/integration/nectr') != -1
-    if in_nectr_integration_test
-        return " --ds=tests.settings --dc=NectrInterfaceAgnostic "
     endif
 
     return ""
