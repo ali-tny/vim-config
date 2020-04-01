@@ -474,6 +474,9 @@ command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-hea
 " Copy URL for selected lines on master branch to clipboard.
 vnoremap <leader>gb :Gbrowse! master:%<cr> 
 
+" Open URL for current file on master branch
+noremap <leader>gB :Gbrowse master:%<cr>
+
 " Markdown
 " --------
 " See https://github.com/plasticboy/vim-markdown#options
