@@ -475,7 +475,7 @@ command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-hea
 vnoremap <leader>gb :Gbrowse! master:%<cr> 
 
 " Open URL for current file on master branch
-noremap <leader>gB :Gbrowse master:%<cr>
+noremap <leader>gB :Gbrowse master:%<cr> 
 
 " Markdown
 " --------
@@ -561,6 +561,9 @@ map <leader>y "*y
 
 " Replace word under cursor with top spelling suggestion
 map <leader>z 1z=
+
+" Open current buffer in its own tab
+map <leader>o :tab sp<cr>
 
 " INSERT MODE
 " -----------
