@@ -1,6 +1,3 @@
-" Keyboard shortcuts for quickly running tests
-" --------------------------------------------
-
 function! UnitTestModuleFilepath(filepath)
     " Return the filepath of the corresponding unit test module to current
     " file.
@@ -66,6 +63,10 @@ function! PyTestOptions(filepath)
 
     if match(a:filepath, 'tests/functional/harpersite') != -1
         return " --ds=tests.settings --dc=HarperConsumerSite "
+    endif
+
+    if match(a:filepath, 'tests/functional/londonpowersite') != -1
+        return " --ds=tests.settings --dc=LondonPowerConsumerSite "
     endif
 
     if match(a:filepath, 'tests/functional/commonsite') != -1
