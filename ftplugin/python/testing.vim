@@ -3,6 +3,12 @@ function! UnitTestModuleFilepath(filepath)
     " file.
     let path_segments = split(a:filepath, "/")
     let filename = path_segments[-1]
+
+    " Ignore the underscore in "private" modules
+    if filename =~ "^_"
+        let filename = filename[1:]
+    endif
+
     return "tests/unit/common/" . join(path_segments[1:-2], "/") . "/test_" . filename
 endfunction
 
