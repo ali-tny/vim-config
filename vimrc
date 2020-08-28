@@ -340,6 +340,9 @@ set mousehide                           " Hide mouse when typing
 
 " Display {{{
 set shortmess=atI                       " Prevent file messages appearing
+                                        "   a = use abbreviations
+                                        "   t = truncate file message on start
+                                        "   U = skip intro message when starting
 set visualbell                          " Rather than beeps
 set noerrorbells                        
 set virtualedit=block
@@ -441,7 +444,7 @@ iabbrev acocunt account
 
 " Plugin config and mappings {{{
 " ==========================
-"
+
 " FZF
 " ---
 
@@ -564,6 +567,10 @@ map <leader>z 1z=
 
 " Open current buffer in its own tab
 map <leader>o :tab sp<cr>
+
+" Fix gx to open the URL under the cursor, like it used to.
+" https://github.com/vim/vim/issues/4738
+nmap gx yiW:!open <cWORD><CR> <C-r>" & <CR><CR>
 
 " INSERT MODE
 " -----------
