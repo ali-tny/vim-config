@@ -392,7 +392,8 @@ endif
 " Keep undo history between sessions
 if has('persistent_undo')
     set undofile
-    set undodir=~/.vim_undo
+    " Note, this isn't created automatically.
+    set undodir=~/.vim/undo
     set undolevels=2000
 endif
 
