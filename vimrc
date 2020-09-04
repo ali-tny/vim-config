@@ -172,6 +172,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
+" Better YAML folding. There's nothing in the standard library and this is
+" better than just setting foldmethod=indent.
+Plug 'pedrohdz/vim-yaml-folds'
+
 " Git integration 
 " ---------------
 
