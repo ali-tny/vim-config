@@ -419,6 +419,21 @@ endif
 " Command-mode mappings {{{
 " ---------------------
 
+" Existing command-line special chars:
+"   CTRL-R "    -> insert unnamed register
+"   CTRL-R %    -> insert current filename
+"   CTRL-R /    -> insert last search
+"   CTRL-V ...  -> insert next non-digit literally
+"   CTRL-B, CTRL-E ...  -> cursor to beginning/end of line
+"   CTRL-W      -> delete word
+"   CTRL-U      -> delete back to start of line
+"   CTRL-R CTRL-W      -> insert Word under the cursor
+"   CTRL-R CTRL-A      -> insert WORD under the cursor
+
+" Emacs-style command-line
+:cnoremap <C-A>	<Home>
+:cnoremap <C-E>	<End>
+
 " Use %% to expand to directory of current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
@@ -590,7 +605,7 @@ inoremap <Right> <NOP>
 inoremap <Up>    <NOP>
 inoremap <Down>  <NOP>
 
-" Mimic some emacs shortcuts that work in bash
+" Mimic some Emacs shortcuts
 
 " Delete line (replaces insert one shiftwidth of indent)
 inoremap <C-d> <ESC>ddi     
