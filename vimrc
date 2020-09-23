@@ -469,7 +469,7 @@ iabbrev acocunt account
 " ---
 
 " Map leader keys to common actions
-"
+
 " Search for files
 nnoremap <leader>f :Files<cr> 
 
@@ -481,9 +481,6 @@ nnoremap <leader>b :Buffers<cr>
 
 " Search tags
 nnoremap <leader>s :Tags<cr>
-
-" Open FZF window at bottom of screen
-let g:fzf_layout = { 'down': '~40%' }
 
 " Disable preview window (takes up too much screen)
 let g:fzf_preview_window = ''
@@ -539,7 +536,7 @@ let g:terraform_fmt_on_save = 1
 " Puppet - align hashes (while editing)
 let g:puppet_align_hashes = 1
 
-" Disable markdown from Polyglot as we're install a separate extension
+" Disable markdown from Polyglot as we're installing a separate extension
 let g:polyglot_disabled = ['markdown']
 
 " Ale
