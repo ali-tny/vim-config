@@ -790,33 +790,28 @@ set tags=./tags,tags,$VIRTUAL_ENV/tags
 " Autocommands {{{
 " ------------
 " All autocmds should be in a group so they can be re-sourced
-" without side-effect.
+" without side-effect. We use a single group that we assign each autocommand to.
+"
 " http://learnvimscriptthehardway.stevelosh.com/chapters/12.html
-"
-" Notes:
-"
-" - Each group starts with autocmd! to remove all existing commands for that
-"   group. This prevents each sourcing from adding duplicate autocommands
-"
+" https://gist.github.com/romainl/6e4c15dfc4885cb4bd64688a71aa7063
 
-augroup cursorline
+augroup MyAutoCommands
     autocmd!
-    " Only show the cursorline for current buffer in normal mode  
-    autocmd WinLeave,InsertEnter * set nocursorline
-    autocmd WinEnter,InsertLeave * set cursorline
 augroup END
+
+" Only show the cursorline for current buffer in normal mode  
+autocmd MyAutoCommands WinLeave,InsertEnter * set nocursorline
+autocmd MyAutoCommands WinEnter,InsertLeave * set cursorline
  
 " Auto-source vim files after save
-augroup VimReload
-    autocmd!
-    autocmd BufWritePost *.vim source %
-augroup END
+autocmd MyAutoCommands BufWritePost *.vim source %
 
-augroup windows
-    autocmd!
-    " Resize splits when a window is created, closed or resized
-    autocmd WinEnter,VimResized * :wincmd =
-augroup END
+" Resize splits when a window is created, closed or resized
+autocmd MyAutoCommands WinEnter,VimResized * :wincmd =
+
+" Open quickfix window after make/grep if there are results
+autocmd MyAutoCommands QuickFixCmdPost cgetexpr cwindow
+autocmd MyAutoCommands QuickFixCmdPost lgetexpr lwindow
 
 " }}}
 
