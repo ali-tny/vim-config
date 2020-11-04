@@ -149,7 +149,7 @@ Plug 'mjbrownie/django-template-textobjects'
 "     :History - buffer history
 "
 " Some leader-mappings defined for these below too.
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Shows 'Match X of Y' in command bar
@@ -159,6 +159,11 @@ Plug 'henrik/vim-indexed-search'
 " -----------------------------------
 
 " Language pack with syntax and indent files for a range of language
+
+" Disable markdown from Polyglot as we're installing a separate extension. This
+" needs to be defined before vim-polyglot is loaded.
+let g:polyglot_disabled = ['markdown']
+
 Plug 'sheerun/vim-polyglot'
 
 " Better markdown support than that provided by vim-polyglot. Vim-polyglot
@@ -193,8 +198,8 @@ Plug 'dietsche/vim-lastplace'
 " Linting 
 " -------
 
-" https://github.com/w0rp/ale
-Plug 'w0rp/ale'
+" https://github.com/dense-analysis/ale
+Plug 'dense-analysis/ale'
 
 " HTML editing
 " ------------
@@ -536,8 +541,6 @@ let g:terraform_fmt_on_save = 1
 " Puppet - align hashes (while editing)
 let g:puppet_align_hashes = 1
 
-" Disable markdown from Polyglot as we're installing a separate extension
-let g:polyglot_disabled = ['markdown']
 
 " Ale
 " ---
