@@ -204,7 +204,7 @@ Plug 'dense-analysis/ale'
 " HTML editing
 " ------------
 
-" Another quick way of writing tags - use C-K to expand the shorthand syntax
+" A quick way of writing tags - use C-K to expand the shorthand syntax
 " eg .container > .wrapper > ul > li.item * 4
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 
@@ -239,7 +239,7 @@ if &t_Co > 2 || has("syntax")
 endif
 
 " Source indent/ftplugins for filetypes
-filetype indent plugin on               " Turn on filetype detection
+filetype indent plugin on  
 
 " }}}
  
@@ -442,6 +442,23 @@ endif
 " Use %% to expand to directory of current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
+" Custom function to call ripgrep with appropriate args via system call rather
+" than in parent shell. This avoids clogging up your shell and the hit-enter prompt.
+" It isn't always clear if there are not results though.
+"
+" For multi-word searches, need to use single quotes.
+"
+" See https://gist.github.com/romainl/56f0c28ef953ffc157f36cc495947ab3
+function! Grep(...)
+    let cmd = join([&grepprg] + [expandcmd(join(a:000, ' '))], ' ')
+    return system(cmd)
+endfunction
+
+command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<f-args>)
+command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<f-args>)
+
+cnoreabbrev <expr> grep (getcmdtype() ==# ':' && getcmdline() ==# 'grep') ? 'Grep' : 'grep'
+
 " }}}
 
 " Operator-pending mappings {{{ 
@@ -642,7 +659,7 @@ nnoremap <Left>  <NOP>
 nnoremap <Right> <NOP>
 
 " Search codebase for word under cursor (v useful)
-nnoremap gw :grep <cword> . <CR>
+nnoremap gw :Grep <cword> . <CR>
 
 " Search codebase for current filename
 nnoremap gW exe 'normal :grep' . expand('%:t') . '.'
