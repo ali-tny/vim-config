@@ -354,7 +354,6 @@ set shortmess=atI                       " Prevent file messages appearing
                                         "   U = skip intro message when starting
 set visualbell                          " Rather than beeps
 set noerrorbells                        
-set virtualedit=block
 " }}}
 
 " Files/buffers {{{
@@ -802,9 +801,6 @@ augroup END
 " Only show the cursorline for current buffer in normal mode  
 autocmd MyAutoCommands WinLeave,InsertEnter * set nocursorline
 autocmd MyAutoCommands WinEnter,InsertLeave * set cursorline
- 
-" Auto-source vim files after save
-autocmd MyAutoCommands BufWritePost *.vim source %
 
 " Resize splits when a window is created, closed or resized
 autocmd MyAutoCommands WinEnter,VimResized * :wincmd =
