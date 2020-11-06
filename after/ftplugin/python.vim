@@ -8,6 +8,6 @@ setlocal spell
 " Make flake8 the default makeprg
 setlocal makeprg=flake8
 
-" Ale
+" Ale linting and fixing
 let b:ale_linters = ['flake8']
 let b:ale_fixers = ['black', 'isort', 'trim_whitespace']

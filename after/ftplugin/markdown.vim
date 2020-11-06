@@ -8,5 +8,8 @@ setlocal autoindent
 " markdown files.
 setlocal nomodeline
 
-"" Unable settings if filetype changes
+" Unable settings if filetype changes.
 let b:undo_ftplugin .= '|setlocal textwidth< spell< nonumber< autoindent< nomodeline<'
+
+" Trim trailing whitespace when saving a file.
+let b:ale_fixers = ['trim_whitespace']
