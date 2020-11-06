@@ -93,6 +93,10 @@ function! PyTestOptions(filepath)
         return " --ds=tests.settings --dc=NectrSupportSite "
     endif
 
+    if match(a:filepath, 'tests/functional/supportsite/goodenergy') != -1
+        return " --ds=tests.settings --dc=GoodEnergySupportSite "
+    endif
+
     " Functional tests - API-sites
 
     if match(a:filepath, 'tests/functional/apisite/octoenergy') != -1
