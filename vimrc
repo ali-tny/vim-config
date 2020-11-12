@@ -94,6 +94,12 @@ Plug 'tpope/vim-repeat'
 "   ]Q  => last quickfix location
 Plug 'tpope/vim-unimpaired'
 
+" Commands for common Unix shell commands
+"   :Delete => delete buffer and file on disk
+"   :Mkdir  => mkdir
+" https://github.com/tpope/vim-eunuch
+Plug 'tpope/vim-eunuch'
+
 " Extend % matching to include HTML tags
 Plug 'tmhedberg/matchit'
 
