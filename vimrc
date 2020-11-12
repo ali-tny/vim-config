@@ -100,9 +100,6 @@ Plug 'tpope/vim-unimpaired'
 " https://github.com/tpope/vim-eunuch
 Plug 'tpope/vim-eunuch'
 
-" Extend % matching to include HTML tags
-Plug 'tmhedberg/matchit'
-
 " Zen-mode for editing:
 " https://github.com/junegunn/goyo.vim
 Plug 'junegunn/goyo.vim'
