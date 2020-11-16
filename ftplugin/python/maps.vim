@@ -1,14 +1,22 @@
 " Fast folding by indent
 setlocal foldmethod=indent
 
-" Comment current line
-nnoremap <buffer> <localleader>c I#<ESC>
+function! VirtualEnvSitePackagesFolder()
+    " Try a few candidate Pythons to see which this virtualenv uses.
+    for python in ["python3.7", "python3.8", "python3.9"]
+        let candidate = $VIRTUAL_ENV . "/lib/" . python
+        if isdirectory(candidate)
+            return candidate . "/site-packages/"
+        endif
+    endfor
 
-" Quick file access in virtualenvs
-nnoremap <leader>vp :e $VIRTUAL_ENV/lib/python3.7/site-packages/
+    return ""
+endfunction
+
+cnoremap %v <C-R>=VirtualEnvSitePackagesFolder()<cr>
 
 " Shortcut to insert debugger breakpoint.
-inoremap <C-J> breakpoint()
+inoremap <buffer> <C-J> breakpoint()
 
 " Map K to use taglist (keyword lookup)
 nnoremap <buffer> K <C-]>
