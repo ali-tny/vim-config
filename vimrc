@@ -451,13 +451,18 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " For multi-word searches, need to use single quotes.
 "
 " See https://gist.github.com/romainl/56f0c28ef953ffc157f36cc495947ab3
+"
+" This has been tweaked and tested with:
+"
+"    :Grep 'foo bar' --- multi-word queries work (but need single quotes)
+"    :Grep 'query\b' --- check word boundaries (and other regex special chars) work
 function! Grep(...)
-    let cmd = join([&grepprg] + [expandcmd(join(a:000, ' '))], ' ')
+    let cmd = join([&grepprg] + [join(a:000, ' ')], ' ')
     return system(cmd)
 endfunction
 
-command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<f-args>)
-command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<f-args>)
+command! -nargs=+ -complete=file_in_path Grep  cgetexpr Grep(<f-args>)
+command! -nargs=+ -complete=file_in_path LGrep lgetexpr Grep(<f-args>)
 
 cnoreabbrev <expr> grep (getcmdtype() ==# ':' && getcmdline() ==# 'grep') ? 'Grep' : 'grep'
 
