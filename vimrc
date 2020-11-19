@@ -745,10 +745,6 @@ nnoremap <leader>x :wqa<CR>
 " Open vimrc in new window
 nnoremap <leader>ve :e ~/.vim/vimrc<CR>
 
-" Create tags file. This could be made fancier as the default config file
-" (~/.ctags) is quite python specific at the moment.
-nnoremap <leader>ct :!ctags<cr>
-
 " VISUAL MODE
 " -----------
 
@@ -785,12 +781,6 @@ if has('statusline')
     set statusline+=col\ %c\ line\ %l/%L
 endif
 " }}}
-
-" Tags {{{
-" ----
-
-" Where to find tags file
-set tags=./tags,tags,$VIRTUAL_ENV/tags
 
 " }}}
 
