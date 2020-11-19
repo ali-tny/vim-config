@@ -84,6 +84,11 @@ function! PyTestOptions(filepath)
     endif
 
     " Functional tests - support-sites
+    
+    " For common tests, just use OE conf 
+    if match(a:filepath, 'tests/functional/supportsite/common') != -1
+        return " --ds=tests.settings --dc=OctoEnergySupportSite "
+    endif
 
     if match(a:filepath, 'tests/functional/supportsite/octoenergy') != -1
         return " --ds=tests.settings --dc=OctoEnergySupportSite "
