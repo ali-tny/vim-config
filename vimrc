@@ -667,10 +667,10 @@ nnoremap <Left>  <NOP>
 nnoremap <Right> <NOP>
 
 " Search codebase for word under cursor (v useful)
-nnoremap gw :Grep <cword> . <CR>
+nnoremap gw :execute "Grep " expand('<cword>') <cr>
 
 " Search codebase for current filename
-nnoremap gW exe 'normal :grep' . expand('%:t') . '.'
+nnoremap gW :execute "Grep " expand('%:t') <cr>
 
 " Jump to definition of word under cursor
 nnoremap gd <c-]>
