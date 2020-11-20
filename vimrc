@@ -302,6 +302,7 @@ set showcmd                             " Display incomplete commands
 set wildmenu                            " Use menu to show command line completions
 set wildmode=list:longest,full          " Command-line completion
 set wildignore+=*.pyc,*egg-info*        " Define files to ignore
+set wildignorecase                      " Case-insensitive tab completion
 
 set shellslash                          " A forward slash is used when expanding filenames
 set cmdheight=1
