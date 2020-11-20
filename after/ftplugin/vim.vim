@@ -12,4 +12,5 @@ let b:undo_ftplugin .= '|setlocal foldmethod< textwidth< keywordprg<'
 
 " Auto-source vim files after save
 autocmd! BufWritePost *.vim source %
+autocmd! BufWritePost vimrc source %
 
