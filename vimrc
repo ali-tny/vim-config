@@ -696,9 +696,6 @@ nnoremap J mzJ`z
 nnoremap n nzz
 nnoremap N Nzz
 
-" Space is pager
-nnoremap <Space> <PageDown>
-
 " Jump between entries in quickfix list. Works well when using :grep and open
 " the folds obscuring the matching line.
 nnoremap <silent> <C-n> :cnext<CR>zo
