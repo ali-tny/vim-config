@@ -2,8 +2,8 @@
 " --------------------------------
 
 " Mappings for wrapping tags with i18n tags
-nnoremap <leader>i vitc{% trans "" %}<ESC>4hp
-vnoremap <leader>i c{% trans "" %}<ESC>4hp
+nnoremap <buffer> <leader>i vitc{% trans "" %}<ESC>4hp
+vnoremap <buffer> <leader>i c{% trans "" %}<ESC>4hp
 
 " Settings
 " --------

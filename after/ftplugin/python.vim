@@ -1,12 +1,12 @@
 setlocal textwidth=99
 
 " Look in virtualenv for tags
-set tags=./tags,tags,$VIRTUAL_ENV/tags
+setlocal tags=./tags,tags,$VIRTUAL_ENV/tags
 
 " Create Python-specific tags file. Note
 " * `--python-kinds=cf` means only create entries for classes and functions (this requires using Universal Ctags)
 " * `--tag-relative=yes` means store a path relative to location of tag file
-nnoremap <buffer> <leader>ct :!ctags -f $VIRTUAL_ENV/tags --languages=python --python-kinds=cfi --tag-relative=yes --totals=yes<cr>
+nnoremap <buffer> <leader>ct :!ctags -f $VIRTUAL_ENV/tags --languages=python --python-kinds=cfiv --tag-relative=yes --totals=yes<cr>
 
 " Spellcheck comments
 setlocal spell

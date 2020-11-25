@@ -13,11 +13,8 @@ function! VirtualEnvSitePackagesFolder()
     return ""
 endfunction
 
-cnoremap %v <C-R>=VirtualEnvSitePackagesFolder()<cr>
+cnoremap <buffer> %v <C-R>=VirtualEnvSitePackagesFolder()<cr>
 
 " Shortcut to insert debugger breakpoint.
 inoremap <buffer> <C-J> breakpoint()
-
-" Map K to use taglist (keyword lookup)
-nnoremap <buffer> K <C-]>
 
