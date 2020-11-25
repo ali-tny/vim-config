@@ -42,17 +42,25 @@
 " .vim folder {{{
 " ----------
 "
+" See https://learnvimscriptthehardway.stevelosh.com/chapters/42.html
+"
 " .vim/
 "     plugged/             # Plugins installed with vim-plug
-"     plugins              # Local plugins
+"     plugins/             # These run once every time Vim starts. They should contain code that you want loaded in every
+"                            Vim session.
+"     ftdetect/            # Run every time Vim starts. These should set-up autocommands that 
+"                            detect and set the filetype of files and NOTHING ELSE
 "     ftplugin/            # Per-filetype settings (these run when any buffer's filetype is set)
-"                          # Should only use setlocal
+"                          # Should only set buffer-local options or they would overwrite options for all open buffers
 "     indent/
 "         htmldjango.vim   # Improved htmldjango indent script which handles
 "                            block indentation (which the standard file doesn't).
 "     after/               # Vim files sourced AFTER dependencies (better for overriding)
 "         ftplugins/
-"         ...
+"     autoload/            # Plugin code that only loads when it's actually needed.
+"         plug.vim         # Vim-plug
+"
+
 "
 " At start-up Vim sources all files in plugins folders in $RUNTIMEPATH. This
 " is the best place to store things that are language agnostic and only need
@@ -672,9 +680,14 @@ nnoremap gw :execute "Grep " expand('<cword>') <cr>
 " Search codebase for current filename
 nnoremap gW :execute "Grep " expand('%:t') <cr>
 
-" Jump to definition of word under cursor
-nnoremap gd <c-]>
-nnoremap gD <c-w>v<c-w>l<c-]> 
+" Swap <c-]> and g<c-]>
+nnoremap <c-]> g<c-]>
+vnoremap <c-]> g<c-]>
+nnoremap g<c-]> <c-]>
+vnoremap g<c-]> <c-]>
+
+" Also use K as a tag look-up command.
+nnoremap K g<c-]>
 
 " Jump to alternate file
 nnoremap <leader><leader> <c-^>
