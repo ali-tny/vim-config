@@ -1,8 +1,5 @@
 setlocal textwidth=99
 
-" Look in virtualenv for tags
-setlocal tags=./tags,tags,$VIRTUAL_ENV/tags
-
 " Create Python-specific tags file. Note
 " * `--python-kinds=cf` means only create entries for classes and functions (this requires using Universal Ctags)
 " * `--tag-relative=yes` means store a path relative to location of tag file
@@ -10,6 +7,9 @@ nnoremap <buffer> <leader>ct :!ctags -f $VIRTUAL_ENV/tags --languages=python --p
 
 " Spellcheck comments
 setlocal spell
+
+" Use pydoc to look-up keywords
+setlocal keywordprg=pydoc
 
 " Make flake8 the default makeprg
 setlocal makeprg=flake8
