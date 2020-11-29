@@ -173,7 +173,7 @@ Plug 'henrik/vim-indexed-search'
 
 " Disable markdown from Polyglot as we're installing a separate extension. This
 " needs to be defined before vim-polyglot is loaded.
-let g:polyglot_disabled = ['markdown']
+let g:polyglot_disabled = ['markdown', 'pascal']
 
 Plug 'sheerun/vim-polyglot'
 
