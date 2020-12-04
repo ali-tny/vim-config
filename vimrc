@@ -551,8 +551,11 @@ let g:vim_markdown_folding_style_pythonic = 1
 " Don't use the shipped key bindings
 let g:vim_markdown_no_default_key_mappings = 1
 
-" Indentation for new lists
-let g:vim_markdown_new_list_item_indent = 2
+" Indentation for new lists. We don't insert bullets as it doesn't play nicely
+" with gq formatting. It relies on a hack of treating bullets as comment characters. 
+" See https://github.com/plasticboy/vim-markdown/issues/232
+let g:vim_markdown_new_list_item_indent = 0
+let g:vim_markdown_auto_insert_bullets = 0
 
 " Syntax extensions (mainly for Hugo blogging)
 let g:vim_markdown_fenced_languages = ['php', 'py=python', 'js=javascript', 'bash=sh', 'viml=vim']
