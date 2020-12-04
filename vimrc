@@ -700,7 +700,7 @@ nnoremap K g<c-]>
 nnoremap ,h K
 
 " Default ctag invocation. Other file-types can define a more specific version.
-nnoremap <buffer> <leader>ct :!ctags<cr>
+nnoremap <leader>ct :!ctags<cr>
 
 " Jump to alternate file
 nnoremap <leader><leader> <c-^>
