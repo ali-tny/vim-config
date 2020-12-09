@@ -418,23 +418,6 @@ endif
 
 " }}}
 
-" GUI options {{{
-" -----------
-"
-" Note - when running in console mode, the font is taken from iTerm
-if has("gui_running")
-    " Set GUI options
-    set guioptions-=m           " Lose toolbar, menu and scrollbar
-    set guioptions-=T     
-    set guioptions-=r    
-    set guioptions-=L
-    " Colors/font
-    set guifont=Monaco:h14
-    set selectmode=""
-endif
-
-" }}}
-
 " Command-mode mappings {{{
 " ---------------------
 
