@@ -1,5 +1,5 @@
 " ============= " VIMRC file for David Winterbottom (@codeinthehole) " ===========
-
+"
 " Inspiration {{{
 " -----------
 " Videos:
@@ -851,9 +851,6 @@ highlight htmlH1 guifg=#42dff4 gui=bold ctermfg=51 ctermbg=None cterm=bold
 highlight htmlH2 guifg=#af84e0 gui=bold ctermfg=45 ctermbg=None cterm=bold
 highlight htmlH3 guifg=#aae295 gui=bold ctermfg=39 ctermbg=None cterm=bold
 highlight htmlH4 guifg=#e9f2b3 gui=bold ctermfg=33 ctermbg=None cterm=bold
-
-" Limelight config
-let g:limelight_conceal_ctermfg = 'gray'
 
 " Goyo
 let g:goyo_width = 80
