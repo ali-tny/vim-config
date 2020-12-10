@@ -389,8 +389,8 @@ set synmaxcol=200                       " Don't try to highlight long lines (for
 set cursorline                          " Highlight the line being edited
 set virtualedit=all                     " Allow cursor to move anywhere
 
-" Look in virtualenv for tags
-set tags=./tags,tags,$VIRTUAL_ENV/tags
+" Where to find tag files
+set tags=./tags,tags
 
 " Highlight conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -677,12 +677,13 @@ vnoremap g<c-]> <c-]>
 
 " Also use K as a tag look-up command 
 " Note, this clobbers the run `keywordprg` map
-nnoremap K g<c-]>
+nnoremap K g]
 
 " Reinstate keyword lookup map
 nnoremap ,h K
 
-" Default ctag invocation. Other file-types can define a more specific version.
+" Default ctag invocation. Ensure project has an appropriate .ctags.d/ folder
+" if the default config isn't right.
 nnoremap <leader>ct :!ctags<cr>
 
 " Jump to alternate file
