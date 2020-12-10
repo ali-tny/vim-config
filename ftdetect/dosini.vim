@@ -1,7 +1,11 @@
+" AWS config files
 autocmd BufRead,BufNewFile */.aws/* setfiletype dosini
 autocmd BufRead,BufNewFile */aws/* setfiletype dosini
 
-" Use for .env files
+" Env files
 autocmd BufRead,BufNewFile *.env setfiletype dosini
+
+" Ctags config files
+autocmd BufRead,BufNewFile *.ctags setfiletype dosini
 
 
