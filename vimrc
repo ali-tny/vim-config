@@ -737,10 +737,6 @@ map <leader>3 :diffget REMOTE<cr>
 " Leave cursor at the end of the yanked block
 vnoremap y y']
 
-" Move visual block
-vnoremap J :move '>+1<CR>gv=gv
-vnoremap K :move '<-2<CR>gv=gv
-
 " Leading mappings
 " ----------------
 
