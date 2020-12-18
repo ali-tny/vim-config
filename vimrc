@@ -399,7 +399,7 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "   * use "-t html" to only search one filetype
 "   * use "-w" to match on word boundaries
 if executable('rg') 
-    set grepprg=rg\ --vimgrep\ --smart-case 
+    set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --glob='!.git'
     set grepformat=%f:%l:%c:%m
 endif 
 
