@@ -677,7 +677,7 @@ vnoremap g<c-]> <c-]>
 
 " Also use K as a tag look-up command 
 " Note, this clobbers the run `keywordprg` map
-nnoremap K g]
+nnoremap K g<C-]>
 
 " Reinstate keyword lookup map
 nnoremap ,h K
