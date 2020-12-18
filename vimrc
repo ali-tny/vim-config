@@ -399,7 +399,7 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "   * use "-t html" to only search one filetype
 "   * use "-w" to match on word boundaries
 if executable('rg') 
-    set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --glob='!.git'
+    set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --glob='!.git' 
     set grepformat=%f:%l:%c:%m
 endif 
 
@@ -810,6 +810,18 @@ autocmd MyAutoCommands WinEnter,VimResized * :wincmd =
 " Open quickfix window after make/grep if there are results
 autocmd MyAutoCommands QuickFixCmdPost cgetexpr cwindow
 autocmd MyAutoCommands QuickFixCmdPost lgetexpr lwindow
+
+" }}}
+
+" Project specific settings {{{
+" -------------------------
+
+function ConfigureKrakenCore()
+    nnoremap <leader>ct :!ctags --languages=python<cr>
+    color zellner
+endfunction
+
+autocmd BufRead */kraken-core/* call ConfigureKrakenCore()
 
 " }}}
 
