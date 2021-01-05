@@ -818,7 +818,6 @@ autocmd MyAutoCommands QuickFixCmdPost lgetexpr lwindow
 
 function ConfigureKrakenCore()
     nnoremap <leader>ct :!ctags --languages=python<cr>
-    color zellner
 endfunction
 
 autocmd BufRead */kraken-core/* call ConfigureKrakenCore()
