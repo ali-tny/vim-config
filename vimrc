@@ -405,7 +405,7 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "   * use "-t html" to only search one filetype
 "   * use "-w" to match on word boundaries
 if executable('rg') 
-    set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --glob='!.git' 
+    set grepprg=rg\ --vimgrep
     set grepformat=%f:%l:%c:%m
 endif 
 
@@ -457,6 +457,7 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 "
 "    :Grep 'foo bar' --- multi-word queries work (but need single quotes)
 "    :Grep 'query\b' --- check word boundaries (and other regex special chars) work
+
 function! Grep(...)
     let cmd = join([&grepprg] + [join(a:000, ' ')], ' ')
     return system(cmd)
