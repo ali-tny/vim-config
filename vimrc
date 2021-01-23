@@ -151,13 +151,19 @@ Plug 'mjbrownie/django-template-textobjects'
 
 " Quick file/buffer/tag searching (faster than CtrlP)
 " ctrl-v - open file in split
-" See https://github.com/junegunn/fzf.vim#commands
+"
+" Commands:
 "
 "     :GFiles - git files
 "     :Colors - colorschemes
 "     :Lines  - lines in open buffers
 "     :Commits - git commits
+"     :Tags - tags from project
+"     :BTags - tags from buffer
 "     :History - buffer history
+"
+" See https://github.com/junegunn/fzf.vim#commands
+"
 "
 " Some leader-mappings defined for these below too.
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
