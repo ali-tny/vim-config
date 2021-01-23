@@ -159,7 +159,7 @@ Plug 'mjbrownie/django-template-textobjects'
 "     :Lines  - lines in open buffers
 "     :Commits - git commits
 "     :Tags - tags from project
-"     :BTags - tags from buffer
+"     :BTags - tags from buffer 
 "     :History - buffer history
 "
 " See https://github.com/junegunn/fzf.vim#commands
@@ -516,11 +516,14 @@ nnoremap <leader>s :Tags<cr>
 " Disable preview window (takes up too much screen)
 let g:fzf_preview_window = ''
 
-" Redefine :Rg command to not search filenames but only content (see https://github.com/junegunn/fzf.vim/issues/346)
+" Redefine :Rg command to not search filenames but only content (see https://github.com/junegunn/fzf.vim/issues/346
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " Fugitive
 " --------
+
+" Don't print escape codes from pre-commit hook
+let g:fugitive_pty = 0
 
 " Copy URL for selected lines on master branch to clipboard.
 vnoremap <leader>gb :Gbrowse! master:%<cr> 
