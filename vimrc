@@ -279,7 +279,7 @@ set autoindent                          " Always set autoindenting on
 set copyindent                          " Copy previous indentation
 set nosmartindent
 set nowrap                              " Don't word wrap
-set linebreak                           " Don't split words when wrapping
+set linebreak                           " Don't split words when wrapping 
 set shiftround                          " Round indent to multiple of 'shiftwidth'
 set smarttab                            " Allow backspacing of a shiftwidth of spaces
 set noeol                               " Prevent a carriage return at end of last line
@@ -797,8 +797,6 @@ if has('statusline')
 endif
 " }}}
 
-" }}}
-
 " Autocommands {{{
 " ------------
 " All autocmds should be in a group so they can be re-sourced
@@ -824,10 +822,27 @@ autocmd MyAutoCommands QuickFixCmdPost lgetexpr lwindow
 
 " }}}
 
+" Commands {{{
+" -------
+
+" Define :Slack to open a Goyo buffer in markdown filetype for drafting
+" messages for Slack.
+function! OpenSlackWindow() 
+    enew
+    Goyo
+    setlocal wrap ft=markdown
+    echo "Ready to draft Slack message..."
+endfunction
+
+command Slack call OpenSlackWindow()
+
+" }}}
+
+
 " Project specific settings {{{
 " -------------------------
 
-function ConfigureKrakenCore()
+function! ConfigureKrakenCore()
     nnoremap <leader>ct :!ctags --languages=python<cr>
 endfunction
 
