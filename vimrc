@@ -279,6 +279,7 @@ set autoindent                          " Always set autoindenting on
 set copyindent                          " Copy previous indentation
 set nosmartindent
 set nowrap                              " Don't word wrap
+set linebreak                           " Don't split words when wrapping
 set shiftround                          " Round indent to multiple of 'shiftwidth'
 set smarttab                            " Allow backspacing of a shiftwidth of spaces
 set noeol                               " Prevent a carriage return at end of last line
