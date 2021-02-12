@@ -30,296 +30,103 @@ function! ComplementaryFilepath(filepath)
     end
 endfunction
 
+function! PyTestConfiguration(filepath)
+    " Return the configuration to run the test at filepath.
+    let configurations = {
+            \"tests/unit/common": "InterfaceAgnostic",
+            \"tests/unit/gbr": "GbrInterfaceAgnostic",
+            \"tests/unit/aus": "AusInterfaceAgnostic",
+            \"tests/unit/octoenergy": "OctoEnergyInterfaceAgnostic",
+            \"tests/unit/nectr": "NectrInterfaceAgnostic",
+            \"tests/unit/goodenergy": "GoodEnergyInterfaceAgnostic",
+            \"tests/unit/eonnext": "EonNextInterfaceAgnostic",
+            \"tests/unit/origin": "OriginInterfaceAgnostic",
+            \"tests/unit/oeg": "OEGInterfaceAgnostic",
+            \"tests/unit/oeus": "OEUSInterfaceAgnostic",
+            \"tests/integration/common": "InterfaceAgnostic",
+            \"tests/integration/gbr": "GbrInterfaceAgnostic",
+            \"tests/integration/aus": "AusInterfaceAgnostic",
+            \"tests/integration/octoenergy": "OctoEnergyInterfaceAgnostic",
+            \"tests/integration/nectr": "NectrInterfaceAgnostic",
+            \"tests/integration/goodenergy": "GoodEnergyInterfaceAgnostic",
+            \"tests/integration/eonnext": "EonNextInterfaceAgnostic",
+            \"tests/integration/origin": "OriginInterfaceAgnostic",
+            \"tests/integration/oeg": "OEGInterfaceAgnostic",
+            \"tests/integration/oeus": "OEUSInterfaceAgnostic",
+            \"tests/functional/consumersite": "OctoEnergyConsumerSite",
+            \"tests/functional/harpersite": "HarperConsumerSite",
+            \"tests/functional/londonpowersite": "LondonPowerConsumerSite",
+            \"tests/functional/commonsite": "OctoEnergyConsumerSite",
+            \"tests/functional/affiliatesite": "OctoEnergyAffiliateSite",
+            \"tests/functional/supportsite/common": "OctoEnergySupportSite",
+            \"tests/functional/supportsite/gbr": "OctoEnergySupportSite",
+            \"tests/functional/supportsite/aus": "NectrSupportSite",
+            \"tests/functional/supportsite/octoenergy": "OctoEnergySupportSite",
+            \"tests/functional/supportsite/nectr": "NectrSupportSite",
+            \"tests/functional/supportsite/goodenergy": "GoodEnergySupportSite",
+            \"tests/functional/supportsite/eonnext": "EonNextSupportSite",
+            \"tests/functional/supportsite/origin": "OriginSupportSite",
+            \"tests/functional/supportsite/oeg": "OEGSupportSite",
+            \"tests/functional/supportsite/oeus": "OEUSSupportSite",
+            \"tests/functional/apisite/common": "OctoEnergyAPISite",
+            \"tests/functional/apisite/uk": "OctoEnergyAPISite",
+            \"tests/functional/apisite/aus": "NectrAPISite",
+            \"tests/functional/apisite/octoenergy": "OctoEnergyAPISite",
+            \"tests/functional/apisite/nectr": "NectrAPISite",
+            \"tests/functional/apisite/goodenergy": "GoodEnergyAPISite",
+            \"tests/functional/apisite/eonnext": "EonNextAPISite",
+            \"tests/functional/apisite/origin": "OriginAPISite",
+            \"tests/functional/apisite/oeg": "OEGAPISite",
+            \"tests/functional/apisite/oeus": "OEUSAPISite",
+            \"tests/functional/webhooksite/common": "OctoEnergyWebhookSite",
+            \"tests/functional/webhooksite/octoenergy": "OctoEnergyWebhookSite",
+            \"tests/functional/webhooksite/nectr": "NectrWebhookSite",
+            \"tests/functional/webhooksite/goodenergy": "GoodEnergyWebhookSite",
+            \"tests/functional/webhooksite/eonnext": "EonNextWebhookSite",
+            \"tests/functional/webhooksite/origin": "OriginWebhookSite",
+            \"tests/functional/webhooksite/oeg": "OEGWebhookSite",
+            \"tests/functional/webhooksite/oeus": "OEUSWebhookSite",
+            \"tests/functional/tasks/common": "OctoEnergyWorker",
+            \"tests/functional/tasks/gbr": "OctoEnergyWorker",
+            \"tests/functional/tasks/aus": "NectrWorker",
+            \"tests/functional/tasks/octoenergy": "OctoEnergyWorker",
+            \"tests/functional/tasks/nectr": "NectrWorker",
+            \"tests/functional/tasks/goodenergy": "GoodEnergyWorker",
+            \"tests/functional/tasks/eonnext": "EonNextWorker",
+            \"tests/functional/tasks/origin": "OriginWorker",
+            \"tests/functional/tasks/oeg": "OEGWorker",
+            \"tests/functional/tasks/oeus": "OEUSWorker",
+            \"tests/functional/commands/common": "OctoEnergyManagementCommand",
+            \"tests/functional/commands/gbr": "OctoEnergyManagementCommand",
+            \"tests/functional/commands/aus": "NectrManagementCommand",
+            \"tests/functional/commands/octoenergy": "OctoEnergyManagementCommand",
+            \"tests/functional/commands/nectr": "NectrManagementCommand",
+            \"tests/functional/commands/goodenergy": "GoodEnergyManagementCommand",
+            \"tests/functional/commands/eonnext": "EonNextManagementCommand",
+            \"tests/functional/commands/origin": "OriginManagementCommand",
+            \"tests/functional/commands/oeg": "OEGManagementCommand",
+            \"tests/functional/commands/oeus": "OEUSManagementCommand",
+            \"tests/functional/events/gbr": "OctoEnergyWorker",
+            \"tests/functional/events/deu": "OEGWorker",
+            \"tests/functional/events/aus": "OriginWorker",
+            \"tests/multidb": "MultiDB",
+    \}
+    echom a:filepath
+    for path in keys(configurations) 
+        if match(a:filepath, path) != -1
+            return configurations[path]
+        endif
+    endfor
+
+    return "InterfaceAgnostic"
+endfunction
+
 function! PyTestOptions(filepath)
     " Return the options to run PyTest with
     
-    " Unit tests
-    "
-    if match(a:filepath, 'tests/unit/common') != -1 
-        return " --ds=tests.settings --dc=InterfaceAgnostic "
-    endif
-    
-    if match(a:filepath, 'tests/unit/octoenergy') != -1 
-        return " --ds=tests.settings --dc=OctoEnergyInterfaceAgnostic "
-    endif
-    
-    if match(a:filepath, 'tests/unit/nectr') != -1
-        return " --ds=tests.settings --dc=NectrInterfaceAgnostic "
-    endif
+    let configuration = PyTestConfiguration(a:filepath)
 
-    if match(a:filepath, 'tests/unit/goodenergy') != -1 
-        return " --ds=tests.settings --dc=GoodEnergyInterfaceAgnostic "
-    endif
-
-    if match(a:filepath, 'tests/unit/eonnext') != -1 
-        return " --ds=tests.settings --dc=EonNextInterfaceAgnostic "
-    endif
-
-    if match(a:filepath, 'tests/unit/aus') != -1 
-        return " --ds=tests.settings --dc=AusInterfaceAgnostic "
-    endif
-
-    if match(a:filepath, 'tests/unit/gbr') != -1 
-        return " --ds=tests.settings --dc=GbrInterfaceAgnostic "
-    endif
-
-    if match(a:filepath, 'tests/unit/origin') != -1 
-        return " --ds=tests.settings --dc=OriginInterfaceAgnostic "
-    endif
-
-    if match(a:filepath, 'tests/unit/oeg') != -1 
-        return " --ds=tests.settings --dc=OEGInterfaceAgnostic "
-    endif
-
-    if match(a:filepath, 'tests/unit/oeus') != -1 
-        return " --ds=tests.settings --dc=OEUSInterfaceAgnostic "
-    endif
-
-    " Integration tests
-    
-    if match(a:filepath, 'tests/integration/common') != -1
-        return " --ds=tests.settings --dc=InterfaceAgnostic "
-    endif
-
-    if match(a:filepath, 'tests/integration/octoenergy') != -1
-        return " --ds=tests.settings --dc=OctoEnergyInterfaceAgnostic "
-    endif
-
-    if match(a:filepath, 'tests/integration/nectr') != -1
-        return " --ds=tests.settings --dc=NectrInterfaceAgnostic "
-    endif
-    
-    if match(a:filepath, 'tests/integration/goodenergy') != -1
-        return " --ds=tests.settings --dc=GoodEnergyInterfaceAgnostic "
-    endif
-
-    if match(a:filepath, 'tests/integration/aus') != -1
-        return " --ds=tests.settings --dc=OriginInterfaceAgnostic "
-    endif
-
-    if match(a:filepath, 'tests/integration/gbr') != -1
-        return " --ds=tests.settings --dc=GbrInterfaceAgnostic "
-    endif
-
-    if match(a:filepath, 'tests/integration/eonnext') != -1
-        return " --ds=tests.settings --dc=EonNextInterfaceAgnostic "
-    endif
-
-    if match(a:filepath, 'tests/integration/origin') != -1
-        return " --ds=tests.settings --dc=EonNextInterfaceAgnostic "
-    endif
-
-    if match(a:filepath, 'tests/integration/oeg') != -1
-        return " --ds=tests.settings --dc=EonNextInterfaceAgnostic "
-    endif
-
-    " Functional tests - consumer-sites
-
-    if match(a:filepath, 'tests/functional/consumersite') != -1
-        return " --ds=tests.settings --dc=OctoEnergyConsumerSite "
-    endif
-
-    if match(a:filepath, 'tests/functional/harpersite') != -1
-        return " --ds=tests.settings --dc=HarperConsumerSite "
-    endif
-
-    if match(a:filepath, 'tests/functional/londonpowersite') != -1
-        return " --ds=tests.settings --dc=LondonPowerConsumerSite "
-    endif
-
-    if match(a:filepath, 'tests/functional/commonsite') != -1
-        return " --ds=tests.settings --dc=OctoEnergyConsumerSite "
-    endif
-
-    if match(a:filepath, 'tests/functional/affiliatesite') != -1
-        return " --ds=tests.settings --dc=OctoEnergyAffiliateSite "
-    endif
-
-    " Functional tests - support-sites
-    
-    " For common tests, just use OE conf 
-    if match(a:filepath, 'tests/functional/supportsite/common') != -1
-        return " --ds=tests.settings --dc=OctoEnergySupportSite "
-    endif
-
-    if match(a:filepath, 'tests/functional/supportsite/octoenergy') != -1
-        return " --ds=tests.settings --dc=OctoEnergySupportSite "
-    endif
-
-    if match(a:filepath, 'tests/functional/supportsite/gbr') != -1
-        return " --ds=tests.settings --dc=OctoEnergySupportSite "
-    endif
-
-    if match(a:filepath, 'tests/functional/supportsite/nectr') != -1
-        return " --ds=tests.settings --dc=NectrSupportSite "
-    endif
-
-    if match(a:filepath, 'tests/functional/supportsite/aus') != -1
-        return " --ds=tests.settings --dc=NectrSupportSite "
-    endif
-
-    if match(a:filepath, 'tests/functional/supportsite/goodenergy') != -1
-        return " --ds=tests.settings --dc=GoodEnergySupportSite "
-    endif
-
-    if match(a:filepath, 'tests/functional/supportsite/origin') != -1
-        return " --ds=tests.settings --dc=OriginSupportSite "
-    endif
-
-    if match(a:filepath, 'tests/functional/supportsite/eonnext') != -1
-        return " --ds=tests.settings --dc=EonNextSupportSite "
-    endif
-
-    " Functional tests - API-sites
-    
-    if match(a:filepath, 'tests/functional/apisite/common') != -1
-        return " --ds=tests.settings --dc=OctoEnergyAPISite "
-    endif
-
-    if match(a:filepath, 'tests/functional/apisite/octoenergy') != -1
-        return " --ds=tests.settings --dc=OctoEnergyAPISite "
-    endif
-
-    if match(a:filepath, 'tests/functional/apisite/uk') != -1
-        return " --ds=tests.settings --dc=OctoEnergyAPISite "
-    endif
-
-    if match(a:filepath, 'tests/functional/apisite/nectr') != -1
-        return " --ds=tests.settings --dc=NectrAPISite "
-    endif
-
-    if match(a:filepath, 'tests/functional/apisite/goodenergy') != -1
-        return " --ds=tests.settings --dc=GoodEnergyAPISite "
-    endif
-
-    if match(a:filepath, 'tests/functional/apisite/origin') != -1
-        return " --ds=tests.settings --dc=OriginAPISite "
-    endif
-
-    if match(a:filepath, 'tests/functional/apisite/oeg') != -1
-        return " --ds=tests.settings --dc=OEGAPISite "
-    endif
-
-    if match(a:filepath, 'tests/functional/apisite/eonnext') != -1
-        return " --ds=tests.settings --dc=EonNextAPISite "
-    endif
-
-    " Functional tests - Webhook-sites
-    "
-    if match(a:filepath, 'tests/functional/webhooksite/common') != -1
-        return " --ds=tests.settings --dc=OctoEnergyWebhookSite "
-    endif
-
-    if match(a:filepath, 'tests/functional/webhooksite/octoenergy') != -1
-        return " --ds=tests.settings --dc=OctoEnergyWebhookSite "
-    endif
-
-    if match(a:filepath, 'tests/functional/webhooksite/eonnext') != -1
-        return " --ds=tests.settings --dc=EonNextWebhookSite "
-    endif
-
-    if match(a:filepath, 'tests/functional/webhooksite/nectr') != -1
-        return " --ds=tests.settings --dc=NectrWebhookSite "
-    endif
-
-    if match(a:filepath, 'tests/functional/webhooksite/origin') != -1
-        return " --ds=tests.settings --dc=OriginWebhookSite "
-    endif
-
-    if match(a:filepath, 'tests/functional/webhooksite/oeg') != -1
-        return " --ds=tests.settings --dc=OEGWebhookSite "
-    endif
-
-    " Functional tests - Celery tasks
-
-    if match(a:filepath, 'tests/functional/tasks/gbr') != -1
-        return " --ds=tests.settings --dc=OctoEnergyWorker "
-    endif
-
-    if match(a:filepath, 'tests/functional/tasks/octoenergy') != -1
-        return " --ds=tests.settings --dc=OctoEnergyWorker "
-    endif
-
-    if match(a:filepath, 'tests/functional/tasks/common') != -1
-        return " --ds=tests.settings --dc=OctoEnergyWorker "
-    endif
-
-    if match(a:filepath, 'tests/functional/tasks/nectr') != -1
-        return " --ds=tests.settings --dc=NectrWorker "
-    endif
-
-    if match(a:filepath, 'tests/functional/tasks/origin') != -1
-        return " --ds=tests.settings --dc=OriginWorker "
-    endif
-
-    if match(a:filepath, 'tests/functional/tasks/goodenergy') != -1
-        return " --ds=tests.settings --dc=GoodEnergyWorker "
-    endif
-
-    if match(a:filepath, 'tests/functional/tasks/eonnext') != -1
-        return " --ds=tests.settings --dc=EonNextWorker "
-    endif
-
-    if match(a:filepath, 'tests/functional/tasks/oeg') != -1
-        return " --ds=tests.settings --dc=OEGWorker "
-    endif
-
-    " Functional tests - MCs
-
-    if match(a:filepath, 'tests/functional/commands/common') != -1
-        return " --ds=tests.settings --dc=OctoEnergyManagementCommand "
-    endif
-
-    if match(a:filepath, 'tests/functional/commands/octoenergy') != -1
-        return " --ds=tests.settings --dc=OctoEnergyManagementCommand "
-    endif
-
-    if match(a:filepath, 'tests/functional/commands/gbr') != -1
-        return " --ds=tests.settings --dc=OctoEnergyManagementCommand "
-    endif
-
-    if match(a:filepath, 'tests/functional/commands/nectr') != -1
-        return " --ds=tests.settings --dc=NectrManagementCommand "
-    endif
-
-    if match(a:filepath, 'tests/functional/commands/origin') != -1
-        return " --ds=tests.settings --dc=OriginManagementCommand "
-    endif
-
-    if match(a:filepath, 'tests/functional/commands/goodenergy') != -1
-        return " --ds=tests.settings --dc=GoodEnergyManagementCommand "
-    endif
-
-    if match(a:filepath, 'tests/functional/commands/eonnext') != -1
-        return " --ds=tests.settings --dc=EonNextManagementCommand "
-    endif
-
-    if match(a:filepath, 'tests/functional/commands/oeg') != -1
-        return " --ds=tests.settings --dc=OEGManagementCommand "
-    endif
-
-    " Functional tests - Events
-
-    if match(a:filepath, 'tests/functional/events/uk') != -1
-        return " --ds=tests.settings --dc=OctoEnergyWorker "
-    endif
-
-    if match(a:filepath, 'tests/functional/events/aus') != -1
-        return " --ds=tests.settings --dc=OriginWorker "
-    endif
-
-    if match(a:filepath, 'tests/functional/events/deu') != -1
-        return " --ds=tests.settings --dc=OEGWorker "
-    endif
-
-    " Misc
-
-    if match(a:filepath, 'tests/multidb') != -1
-        return " --ds=tests.settings --dc=MultiDB "
-    endif
-
-
-    return ""
+    return " --ds=tests.settings --dc=" . configuration . " "
 endfunction
 
 function! RunMostRecentTest()
