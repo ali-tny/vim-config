@@ -464,8 +464,8 @@ function! Grep(...)
     return system(cmd)
 endfunction
 
-command! -nargs=+ -complete=file_in_path Grep  cgetexpr Grep(<f-args>)
-command! -nargs=+ -complete=file_in_path LGrep lgetexpr Grep(<f-args>)
+command! -nargs=+ -complete=file_in_path Grep  cexpr Grep(<f-args>)
+command! -nargs=+ -complete=file_in_path LGrep lexpr Grep(<f-args>)
 
 cnoreabbrev <expr> grep (getcmdtype() ==# ':' && getcmdline() ==# 'grep') ? 'Grep' : 'grep'
 
@@ -817,8 +817,8 @@ autocmd MyAutoCommands WinEnter,InsertLeave * set cursorline
 autocmd MyAutoCommands WinEnter,VimResized * :wincmd =
 
 " Open quickfix window after make/grep if there are results
-autocmd MyAutoCommands QuickFixCmdPost cgetexpr cwindow
-autocmd MyAutoCommands QuickFixCmdPost lgetexpr lwindow
+autocmd MyAutoCommands QuickFixCmdPost cexpr cwindow
+autocmd MyAutoCommands QuickFixCmdPost lexpr lwindow
 
 " }}}
 
@@ -837,7 +837,6 @@ endfunction
 command Slack call OpenSlackWindow()
 
 " }}}
-
 
 " Project specific settings {{{
 " -------------------------
