@@ -34,6 +34,10 @@ function! PyTestOptions(filepath)
     " Return the options to run PyTest with
     
     " Unit tests
+    "
+    if match(a:filepath, 'tests/unit/common') != -1 
+        return " --ds=tests.settings --dc=InterfaceAgnostic "
+    endif
     
     if match(a:filepath, 'tests/unit/octoenergy') != -1 
         return " --ds=tests.settings --dc=OctoEnergyInterfaceAgnostic "
@@ -47,8 +51,36 @@ function! PyTestOptions(filepath)
         return " --ds=tests.settings --dc=GoodEnergyInterfaceAgnostic "
     endif
 
+    if match(a:filepath, 'tests/unit/eonnext') != -1 
+        return " --ds=tests.settings --dc=EonNextInterfaceAgnostic "
+    endif
+
+    if match(a:filepath, 'tests/unit/aus') != -1 
+        return " --ds=tests.settings --dc=AusInterfaceAgnostic "
+    endif
+
+    if match(a:filepath, 'tests/unit/gbr') != -1 
+        return " --ds=tests.settings --dc=GbrInterfaceAgnostic "
+    endif
+
+    if match(a:filepath, 'tests/unit/origin') != -1 
+        return " --ds=tests.settings --dc=OriginInterfaceAgnostic "
+    endif
+
+    if match(a:filepath, 'tests/unit/oeg') != -1 
+        return " --ds=tests.settings --dc=OEGInterfaceAgnostic "
+    endif
+
+    if match(a:filepath, 'tests/unit/oeus') != -1 
+        return " --ds=tests.settings --dc=OEUSInterfaceAgnostic "
+    endif
+
     " Integration tests
-    "
+    
+    if match(a:filepath, 'tests/integration/common') != -1
+        return " --ds=tests.settings --dc=InterfaceAgnostic "
+    endif
+
     if match(a:filepath, 'tests/integration/octoenergy') != -1
         return " --ds=tests.settings --dc=OctoEnergyInterfaceAgnostic "
     endif
@@ -59,6 +91,26 @@ function! PyTestOptions(filepath)
     
     if match(a:filepath, 'tests/integration/goodenergy') != -1
         return " --ds=tests.settings --dc=GoodEnergyInterfaceAgnostic "
+    endif
+
+    if match(a:filepath, 'tests/integration/aus') != -1
+        return " --ds=tests.settings --dc=OriginInterfaceAgnostic "
+    endif
+
+    if match(a:filepath, 'tests/integration/gbr') != -1
+        return " --ds=tests.settings --dc=GbrInterfaceAgnostic "
+    endif
+
+    if match(a:filepath, 'tests/integration/eonnext') != -1
+        return " --ds=tests.settings --dc=EonNextInterfaceAgnostic "
+    endif
+
+    if match(a:filepath, 'tests/integration/origin') != -1
+        return " --ds=tests.settings --dc=EonNextInterfaceAgnostic "
+    endif
+
+    if match(a:filepath, 'tests/integration/oeg') != -1
+        return " --ds=tests.settings --dc=EonNextInterfaceAgnostic "
     endif
 
     " Functional tests - consumer-sites
@@ -94,7 +146,15 @@ function! PyTestOptions(filepath)
         return " --ds=tests.settings --dc=OctoEnergySupportSite "
     endif
 
+    if match(a:filepath, 'tests/functional/supportsite/gbr') != -1
+        return " --ds=tests.settings --dc=OctoEnergySupportSite "
+    endif
+
     if match(a:filepath, 'tests/functional/supportsite/nectr') != -1
+        return " --ds=tests.settings --dc=NectrSupportSite "
+    endif
+
+    if match(a:filepath, 'tests/functional/supportsite/aus') != -1
         return " --ds=tests.settings --dc=NectrSupportSite "
     endif
 
@@ -102,9 +162,25 @@ function! PyTestOptions(filepath)
         return " --ds=tests.settings --dc=GoodEnergySupportSite "
     endif
 
+    if match(a:filepath, 'tests/functional/supportsite/origin') != -1
+        return " --ds=tests.settings --dc=OriginSupportSite "
+    endif
+
+    if match(a:filepath, 'tests/functional/supportsite/eonnext') != -1
+        return " --ds=tests.settings --dc=EonNextSupportSite "
+    endif
+
     " Functional tests - API-sites
+    
+    if match(a:filepath, 'tests/functional/apisite/common') != -1
+        return " --ds=tests.settings --dc=OctoEnergyAPISite "
+    endif
 
     if match(a:filepath, 'tests/functional/apisite/octoenergy') != -1
+        return " --ds=tests.settings --dc=OctoEnergyAPISite "
+    endif
+
+    if match(a:filepath, 'tests/functional/apisite/uk') != -1
         return " --ds=tests.settings --dc=OctoEnergyAPISite "
     endif
 
@@ -116,19 +192,132 @@ function! PyTestOptions(filepath)
         return " --ds=tests.settings --dc=GoodEnergyAPISite "
     endif
 
-    " Functional tests - misc
+    if match(a:filepath, 'tests/functional/apisite/origin') != -1
+        return " --ds=tests.settings --dc=OriginAPISite "
+    endif
 
-    if match(a:filepath, 'tests/functional/webhooksite') != -1
+    if match(a:filepath, 'tests/functional/apisite/oeg') != -1
+        return " --ds=tests.settings --dc=OEGAPISite "
+    endif
+
+    if match(a:filepath, 'tests/functional/apisite/eonnext') != -1
+        return " --ds=tests.settings --dc=EonNextAPISite "
+    endif
+
+    " Functional tests - Webhook-sites
+    "
+    if match(a:filepath, 'tests/functional/webhooksite/common') != -1
         return " --ds=tests.settings --dc=OctoEnergyWebhookSite "
     endif
 
-    if match(a:filepath, 'tests/functional/tasks') != -1
+    if match(a:filepath, 'tests/functional/webhooksite/octoenergy') != -1
+        return " --ds=tests.settings --dc=OctoEnergyWebhookSite "
+    endif
+
+    if match(a:filepath, 'tests/functional/webhooksite/eonnext') != -1
+        return " --ds=tests.settings --dc=EonNextWebhookSite "
+    endif
+
+    if match(a:filepath, 'tests/functional/webhooksite/nectr') != -1
+        return " --ds=tests.settings --dc=NectrWebhookSite "
+    endif
+
+    if match(a:filepath, 'tests/functional/webhooksite/origin') != -1
+        return " --ds=tests.settings --dc=OriginWebhookSite "
+    endif
+
+    if match(a:filepath, 'tests/functional/webhooksite/oeg') != -1
+        return " --ds=tests.settings --dc=OEGWebhookSite "
+    endif
+
+    " Functional tests - Celery tasks
+
+    if match(a:filepath, 'tests/functional/tasks/gbr') != -1
         return " --ds=tests.settings --dc=OctoEnergyWorker "
     endif
 
-    if match(a:filepath, 'tests/functional/commands') != -1
+    if match(a:filepath, 'tests/functional/tasks/octoenergy') != -1
+        return " --ds=tests.settings --dc=OctoEnergyWorker "
+    endif
+
+    if match(a:filepath, 'tests/functional/tasks/common') != -1
+        return " --ds=tests.settings --dc=OctoEnergyWorker "
+    endif
+
+    if match(a:filepath, 'tests/functional/tasks/nectr') != -1
+        return " --ds=tests.settings --dc=NectrWorker "
+    endif
+
+    if match(a:filepath, 'tests/functional/tasks/origin') != -1
+        return " --ds=tests.settings --dc=OriginWorker "
+    endif
+
+    if match(a:filepath, 'tests/functional/tasks/goodenergy') != -1
+        return " --ds=tests.settings --dc=GoodEnergyWorker "
+    endif
+
+    if match(a:filepath, 'tests/functional/tasks/eonnext') != -1
+        return " --ds=tests.settings --dc=EonNextWorker "
+    endif
+
+    if match(a:filepath, 'tests/functional/tasks/oeg') != -1
+        return " --ds=tests.settings --dc=OEGWorker "
+    endif
+
+    " Functional tests - MCs
+
+    if match(a:filepath, 'tests/functional/commands/common') != -1
         return " --ds=tests.settings --dc=OctoEnergyManagementCommand "
     endif
+
+    if match(a:filepath, 'tests/functional/commands/octoenergy') != -1
+        return " --ds=tests.settings --dc=OctoEnergyManagementCommand "
+    endif
+
+    if match(a:filepath, 'tests/functional/commands/gbr') != -1
+        return " --ds=tests.settings --dc=OctoEnergyManagementCommand "
+    endif
+
+    if match(a:filepath, 'tests/functional/commands/nectr') != -1
+        return " --ds=tests.settings --dc=NectrManagementCommand "
+    endif
+
+    if match(a:filepath, 'tests/functional/commands/origin') != -1
+        return " --ds=tests.settings --dc=OriginManagementCommand "
+    endif
+
+    if match(a:filepath, 'tests/functional/commands/goodenergy') != -1
+        return " --ds=tests.settings --dc=GoodEnergyManagementCommand "
+    endif
+
+    if match(a:filepath, 'tests/functional/commands/eonnext') != -1
+        return " --ds=tests.settings --dc=EonNextManagementCommand "
+    endif
+
+    if match(a:filepath, 'tests/functional/commands/oeg') != -1
+        return " --ds=tests.settings --dc=OEGManagementCommand "
+    endif
+
+    " Functional tests - Events
+
+    if match(a:filepath, 'tests/functional/events/uk') != -1
+        return " --ds=tests.settings --dc=OctoEnergyWorker "
+    endif
+
+    if match(a:filepath, 'tests/functional/events/aus') != -1
+        return " --ds=tests.settings --dc=OriginWorker "
+    endif
+
+    if match(a:filepath, 'tests/functional/events/deu') != -1
+        return " --ds=tests.settings --dc=OEGWorker "
+    endif
+
+    " Misc
+
+    if match(a:filepath, 'tests/multidb') != -1
+        return " --ds=tests.settings --dc=MultiDB "
+    endif
+
 
     return ""
 endfunction
