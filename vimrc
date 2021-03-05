@@ -172,7 +172,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Shows 'Match X of Y' in command bar
-Plug 'henrik/vim-indexed-search'
+" Plug 'henrik/vim-indexed-search'
 
 " Syntax highlighting and indentation
 " -----------------------------------
