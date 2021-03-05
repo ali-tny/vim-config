@@ -100,6 +100,8 @@ Plug 'tpope/vim-repeat'
 "   ]q  => next quickfix location
 "   [Q  => first quickfix location
 "   ]Q  => last quickfix location
+"   [n  => previous conflict marker
+"   ]n  => next conflict marker
 Plug 'tpope/vim-unimpaired'
 
 " Commands for common Unix shell commands
@@ -336,10 +338,10 @@ set equalalways                         " Keep windows equally sized
 
 " Folding {{{
 set foldenable
-set foldmethod=syntax
-set foldlevel=0
-set foldnestmax=2
+set foldmethod=syntax                   " Default fold method (Python uses indent)
 set foldlevelstart=0                    " Starting fold level for a new buffer
+set foldlevel=0                         " Sets the default fold level (folder with a higher level will be closed)
+set foldnestmax=2
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 
 " Spelling
@@ -443,7 +445,7 @@ endif
 :cnoremap <C-A>	<Home>
 :cnoremap <C-E>	<End>
 
-" Use %% to expand to directory of current file
+" Use %% to expand to directory of current file.
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 " Custom function to call ripgrep with appropriate args via system call rather
@@ -464,9 +466,10 @@ function! Grep(...)
     return system(cmd)
 endfunction
 
-command! -nargs=+ -complete=file_in_path Grep  cexpr Grep(<f-args>)
+command! -nargs=+ -complete=file_in_path Grep  cexpr Grep(<f-args>) | normal zi
 command! -nargs=+ -complete=file_in_path LGrep lexpr Grep(<f-args>)
 
+" Correct :grep to :Grep
 cnoreabbrev <expr> grep (getcmdtype() ==# ':' && getcmdline() ==# 'grep') ? 'Grep' : 'grep'
 
 " }}}
