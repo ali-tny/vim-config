@@ -870,3 +870,25 @@ highlight htmlH4 guifg=#e9f2b3 gui=bold ctermfg=33 ctermbg=None cterm=bold
 let g:goyo_width = 80
 
 " }}}
+
+" Quickfix  {{{
+" -----------
+" Throwaway function for using with :cdo
+
+function! FixQuickfixEntry()
+    " Example the line of the error to determine what fix is required.
+    let line = getline('.')
+    if line =~ 'as e:$'
+        " Handle scenario of unused exception variable
+        s/ as e:/:/
+    elseif line =~ '^\s\+\w\+ = factory'
+        " Handle scenario of unused test factory variable
+        normal _
+        normal 2dw
+    else
+        echom "Unable to fix"
+    endif
+endfunction
+
+" }}}
+
