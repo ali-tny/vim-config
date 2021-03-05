@@ -123,10 +123,16 @@ endfunction
 
 function! PyTestOptions(filepath)
     " Return the options to run PyTest with
+    let filepath = expand('%:p:h')
     
-    let configuration = PyTestConfiguration(a:filepath)
+    " Test if in kraken-core project
+    if match(filepath, 'kraken-core') != -1
+        let configuration = PyTestConfiguration(a:filepath)
+        return " --ds=tests.settings --dc=" . configuration . " "
+    endif
 
-    return " --ds=tests.settings --dc=" . configuration . " "
+    return ""
+
 endfunction
 
 function! RunMostRecentTest()
@@ -165,7 +171,7 @@ function! RunMostRecentTest()
 
         exec "silent :!clear"
         exec "silent :!echo -e \"Running \033[0;35m" . t:test_function . "\033[0m from \033[0;34m" . t:test_module . "\033[0m ...\""
-        let cmd = "py.test -s " . t:test_options . t:test_module . " -k " . t:test_function
+        let cmd = "py.test " . t:test_options . t:test_module . " -k " . t:test_function
         exec "silent :!echo " . cmd
         exec ":!" . cmd
     end
