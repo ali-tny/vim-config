@@ -71,6 +71,7 @@ function! PyTestConfiguration(filepath)
             \"tests/functional/apisite/common": "OctoEnergyAPISite",
             \"tests/functional/apisite/uk": "OctoEnergyAPISite",
             \"tests/functional/apisite/aus": "NectrAPISite",
+            \"tests/functional/apisite/deu": "OEGAPISite",
             \"tests/functional/apisite/octoenergy": "OctoEnergyAPISite",
             \"tests/functional/apisite/nectr": "NectrAPISite",
             \"tests/functional/apisite/goodenergy": "GoodEnergyAPISite",
