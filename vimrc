@@ -720,10 +720,6 @@ nnoremap J mzJ`z
 nnoremap n nzz
 nnoremap N Nzz
 
-" Open folds after jumping
-nnoremap n nzO
-nnoremap N NzO
-
 " Typos
 nnoremap :W :w
 nnoremap :E :e
