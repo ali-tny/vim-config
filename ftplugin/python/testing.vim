@@ -112,7 +112,6 @@ function! PyTestConfiguration(filepath)
             \"tests/functional/events/aus": "OriginWorker",
             \"tests/multidb": "MultiDB",
     \}
-    echom a:filepath
     for path in keys(configurations) 
         if match(a:filepath, path) != -1
             return configurations[path]
@@ -124,10 +123,9 @@ endfunction
 
 function! PyTestOptions(filepath)
     " Return the options to run PyTest with
-    let filepath = expand('%:p:h')
     
     " Test if in kraken-core project
-    if match(filepath, 'kraken-core') != -1
+    if match(a:filepath, 'kraken-core') != -1
         let configuration = PyTestConfiguration(a:filepath)
         return " --ds=tests.settings --dc=" . configuration . " "
     endif
@@ -148,7 +146,7 @@ function! RunMostRecentTest()
     let in_test_file = match(expand("%"), 'test_.*\.py$') != -1
     if in_test_file
         " Grab the filepath module name
-        let t:test_path = expand("%")
+        let t:test_path = expand("%:p")
         let t:test_module = @%
         " Use a mark to return cursor to original position
         exe "normal mz"
@@ -195,7 +193,7 @@ function! RunMostRecentTestModule()
     " Check if we're editing a test module. If so, store the path in a
     " tab-scoped variable.
     if match(expand("%:t"), 'test_.*\.py$') != -1
-        let t:test_module=@%
+        let t:test_module=expand("%:p")
     else
         " If we're not editing a test module, look for the corresponding unit test
         " module for the production module we're in
