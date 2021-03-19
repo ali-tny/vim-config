@@ -200,6 +200,9 @@ Plug 'plasticboy/vim-markdown'
 " better than just setting foldmethod=indent.
 Plug 'pedrohdz/vim-yaml-folds'
 
+" Support for Hashicorp Sentinel buffers (not yet included in polyglot)
+Plug 'hashicorp/sentinel.vim'
+
 " Git integration 
 " ---------------
 
